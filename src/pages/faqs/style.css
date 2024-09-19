@@ -1,0 +1,12 @@
+
+.faqs-page .accordion-button{
+    padding: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.faqs-page .accordion-button:focus{
+    box-shadow: none !important;
+}
+.faqs-page .accordion-item{
+    border: 2px solid #95c1f3 !important;
+}

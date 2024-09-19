@@ -1,0 +1,17 @@
+.help{
+    background-color: aliceblue;
+}
+.table{
+    background-color: #fff !important;
+}
+.table tr:nth-child(odd){
+    background-color: rgba(165, 208, 245, 0.367);
+}
+.table tr th{
+    background-color: #139dff;
+    color: #fff;
+    padding: 15px;
+}
+.table tr td{
+    padding: 15px;
+}

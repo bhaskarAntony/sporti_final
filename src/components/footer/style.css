@@ -1,0 +1,11 @@
+footer{
+    background: var(--gradient);
+    color: #fff;
+}
+footer a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 10px;
+    display: block;
+}

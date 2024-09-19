@@ -1,0 +1,66 @@
+.recent-tabs .nav-link{
+    color: #000 !important;
+    border: 1px solid #fff !important;
+    border-radius: 0px !important;
+    color: #fff !important;
+    /* white-space: nowrap; */
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0px !important;
+    
+}
+.recent-tabs .nav-item{
+    flex: 1;
+    margin: 0px !important;
+}
+.recent-tabs .active{
+    /* border-bottom: 3px solid #8843a3 !important; */
+    color: #282972 !important;
+}
+.recent-tabs{
+    background:var(--gradient) !important;
+    /* flex-wrap: nowrap !important; */
+    /* overflow: auto; */
+    align-items:center;
+    padding: 10px !important;
+    justify-content: center;
+}
+
+.upcoming-events{
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.pastEvent-card{
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.pastEvent-card img{
+    height: 250px;
+    object-fit: cover;
+}
+.pastEvent-card .event-info{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#00000051, #000);
+    left: 0px;
+    top: 0px;
+}
+
+@media (max-width:576px){
+    .recent-tabs .nav-item{
+        width: 100% !important;
+        flex: auto !important;
+    }
+}

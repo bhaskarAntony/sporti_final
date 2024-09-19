@@ -1,0 +1,257 @@
+.food-tabs .nav-link{
+    color: #000 !important;
+    border: none !important;
+}
+.food-tabs .active{
+    border-bottom: 3px solid #8843a3 !important;
+    color: #8843a3 !important;
+}
+.food-categories{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+}
+.food-categories img{
+    width: 100%;
+     height: 200px;
+    object-fit: cover;
+    /* border-radius: 100px; */
+
+}
+
+.menu-item, .room-card{
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.menu-item:hover img, .room-card:hover img{
+    filter: blur(5px)
+
+}
+.menu-item:hover, .room-card:hover{
+    transition: 0.8s;
+    transform: scale(1.03);
+    cursor: pointer;
+}
+.menu-info p, .room-info h1{
+    position: relative;
+    overflow: hidden;
+}
+.menu-info p:before, .room-info h1::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: yellow;
+    bottom: 0px;
+    transform: translateX(-100%);
+}
+.menu-item:hover .menu-info p::before, .room-card:hover .room-info h1:hover{
+    transform: translateX(0px);
+    transition: 1s;
+}
+.menu-info, .room-info{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* background-color: #000; */
+    background: linear-gradient(#0000000c, #000);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    color: #fff;
+  
+}
+.allfoods a{
+    text-decoration: none;
+}
+.food-card, .bottom-card{
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.food-card:hover{
+    transform: scale(1.05);
+}
+.food-card-top{
+    position: relative;
+}
+.type{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    left: 3px;
+    top: 3px;
+    border-radius: 5px;
+}
+.type-circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: green;
+}
+.add, .food-card-top .active{
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    width: 100px;
+    justify-content: space-between;
+    background-color: #0707078a;
+    border-radius: 100px;
+    font-size: 1rem;
+    color: #ffffff;
+    backdrop-filter: blur(5px);
+}
+
+.filter{
+    z-index: 1020;
+    box-shadow: 0px 10px 40px #fff;
+}
+.food-card-top .active button{
+    color: #fff;
+    border: none;
+    background-color: transparent;
+}
+.filter button{
+    white-space: nowrap;
+}
+.food-card img{
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.caption{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ .price{
+    flex: 1;
+    white-space: nowrap;
+}
+
+
+
+
+/* view page  */
+.food-banner{
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.offcanvas{
+    min-height:45vh;
+    overflow: auto;
+}
+.bottom-card{
+    width: 70%;
+    margin: auto;
+}
+.bottom-card img{
+    height: 150px;
+    object-fit: cover;
+}
+
+
+
+.bottom-bar{
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff184a;
+    color: #fff;
+    width: fit-content;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+
+
+/* cart-item */
+.cart-card{
+    padding: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.cart-foods{
+    list-style-type: none;
+    padding: 0px;
+
+}
+.cart-item{
+    padding: 10px;
+}
+
+.order-btn{
+    padding: 15px;
+    background-color: #ff184a;
+    color: #fff;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 6px 15px #f2132945;
+    cursor: pointer;
+}
+
+.order-btn:hover, .bottom-bar:hover{
+    transition: 0.7s;
+    transform:  translateX(-40%);
+}
+@media(max-width:768px){
+    .food-tabs .nav-link{
+        width: 100% !important;
+    }
+    .nav-item{
+        width: 100% !important;
+    }
+    .food-tabs{
+        flex-wrap: nowrap !important;
+    }
+    .menu-item, .room-card{
+        flex: 1;
+        min-width: 100px;
+        width: 100%;
+        /* background-color: #000; */
+    }
+    .food-categories img{
+     width: 100% !important;    
+     height: 110px;
+    }
+    .offcanvas{
+        min-height: 74vh;
+    }
+    .bottom-card img{
+        height: 250px;
+    }
+    .bottom-card{
+        width: 100%;
+    }
+    .bottom-bar{
+        width: 100%;
+        border-radius: 0px;
+        left: 0px;
+        bottom: 0px;
+        transform: translateX(0px);
+    }
+}

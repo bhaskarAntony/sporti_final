@@ -1,0 +1,203 @@
+
+:root{
+    --primary: #4b9cff;
+    --secondary: #fc6838;
+    --light-color:#f9fafd;
+}
+*{
+  text-transform: capitalize !important;
+}
+[type="email"], [type="data"], [type="datetime-local"]{
+    text-transform: lowercase !important;
+}
+.admin .app{
+    max-height: 100vh !important;
+    overflow: hidden;
+}
+.admin .app-right{
+    height: 100vh;
+    overflow: auto;
+}
+.admin .light-bg{
+    background-color: var(--light-color) !important;
+}
+.admin .form-control{
+    padding: 15px !important;
+    margin-bottom: 20px;
+}
+.admin .form-control:hover, .admin .form-control:focus{
+    box-shadow: none !important;
+    border: 1px solid var(--primary) !important;
+}
+.admin .form-label{
+    color: #424242;
+    font-weight: bold;
+}
+.admin .bg-main{
+  background-color: #313552 !important;
+}
+.admin .btn-main{
+  background-color: #313552;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.admin .dropdown-menu{
+  background: #fff !important;
+}
+.admin .dropdown-menu .admin .dropdown-item{
+  padding: 15px !important;
+  color: #fff !important;
+}
+.admin .dropdown-menu .admin .dropdown-item a{
+  color: #ccc !important;
+}
+.admin .dropdown-menu .admin .dropdown-item:hover{
+  background: #fff !important;
+  color: #282972 !important;
+}
+.admin .btn-close{
+    --bs-btn-close-bg:url(https://cdn-icons-png.admin .flaticon.admin .com/128/8791/8791943.admin .png?ga=GA1.admin .1.admin .874872603.admin .1694171926&track=ais) !important;
+}
+.admin .main-btn{
+    border: none;
+    outline: none;
+    padding: 10px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.admin th, .admin .navbar{
+     background: linear-gradient(45deg, #282972, #522872) !important;
+     /* color: #fff !important; */
+}
+/* .admin .navbar a{
+    color: #fff !important;
+} */
+
+
+/* .admin .sidenav .admin .sidenav-item a{
+    text-decoration: none;
+    color: #fff;
+} */
+
+/* For WebKit Browsers */
+::-webkit-scrollbar {
+    width: 8px; /* width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* color of the track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #b5b5b5; /* color of the thumb */
+    border-radius: 6px; /* roundness of the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #c0c0c0; /* color of the thumb on hover */
+  }
+  
+  /* For Firefox */
+  /* Note: Firefox currently only supports styling the thumb */
+  /* Track styling is not supported in Firefox as of my knowledge cutoff in January 2022 */
+  ::-moz-scrollbar-thumb {
+    background-color: #888; /* color of the thumb */
+    border-radius: 6px; /* roundness of the thumb */
+  }
+  
+  ::-moz-scrollbar-thumb:hover {
+    background-color: #555; /* color of the thumb on hover */
+  }
+  .admin .loading{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #00000064;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .admin table{
+    width: 100%;
+    table-layout: fixed;
+    overflow: auto;
+  }
+  .admin table td{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .admin .form-control{
+
+  }
+  .admin .form-control:focus{
+    box-shadow: none !important;
+    border: none !important;
+    border: 1px solid #ccc !important;
+  }
+  .admin .logo{
+    width: 50px;
+    background-color: #fff;
+    margin-right: 10px;
+    border-radius: 100px;
+  }
+
+  .admin .table-container {
+    padding: 10px;
+    width: 100%;
+    overflow-y: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin table th,
+  .admin table td {
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  .admin table thead {
+    position: sticky;
+    top: 0;
+    background: #f1f1f1; /* Background color for the header */
+    z-index: 1; /* Ensure the header is above the body */
+  }
+  
+  .admin table th {
+    border-bottom: 2px solid #ddd; /* Border below the header */
+  }
+  
+  .admin table td {
+    border-bottom: 1px solid #ddd; /* Border below each row */
+  }
+
+  .admin .dropdown-menu{
+    background: #fff !important;
+    color: #282972 !important;
+  }
+ .admin .dropdown-menu .admin .dropdown-item{
+  color: #000 !important;
+ } 
+  /* .admin .dropdown-menu .admin .dropdown-item{
+    padding: 15px !important;
+    color: #fff !important;
+  }
+  .admin .dropdown-menu .admin .dropdown-item a{
+    color: #ccc !important;
+  }
+  .admin .dropdown-menu .admin .dropdown-item:hover{
+    background: #fff !important;
+    color: #282972 !important;
+  } */

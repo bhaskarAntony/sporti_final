@@ -1,0 +1,87 @@
+.admin .dashboard{
+    background-color: #f1f1f1;
+}
+.admin .icon{
+    width: 60px;
+    height: 60px;
+    background-color: #8E7AB5;
+    padding: 10px;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.admin .main-btn{
+    border: none;
+    padding: 10px 20px;
+    background-color: #8E7AB5;
+    color: #fff;
+    font-size: 1.admin .1rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.admin .months{
+    border: none !important;
+}
+
+.admin .all-bookings{
+    height: 80vh;
+    overflow: auto;
+    background-color: #fff;
+
+}
+.admin .all-bookings table tr th{
+    background: #8E7AB5 !important;
+    color: #fff !important;
+    border: 1px solid #ccc !important;
+    padding: 10px;
+    /* text-align: center; */
+}
+.admin .all-bookings table tr td{
+    padding: 10px;
+    /* text-align: center; */
+    border: 1px solid #ccc;
+}
+.admin .all-bookings table tr td img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+
+
+.admin .room{
+    font-size: 1.admin .2rem;
+    padding: 15px;
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 20px;
+}
+.admin .room:disabled{
+    background-color: rgb(228, 228, 228) !important;
+    border-radius: 10px;
+}
+
+.admin .all-rooms .admin .room{
+    width: 20px;
+    height: 20px;
+    font-size: 0.admin .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.admin .booked{
+    background: rgba(252, 113, 113, 0.admin .452);
+    color: rgb(241, 77, 77);
+}
+
+.admin .available{
+    background: rgba(113, 252, 155, 0.admin .452);
+    color: rgb(2, 104, 41);
+}

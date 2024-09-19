@@ -1,0 +1,117 @@
+header{
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 1020;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-top: 1px solid #fff;
+}
+
+.navbar{
+    background: var(--gradient)
+}
+.nav-link{
+    font-size: 1.1rem;
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    position: relative;
+    overflow: hidden;
+    margin-left: 30px;
+}
+header .active{
+    position: relative;
+    background-color: #fff;
+    color: #2d007b !important;
+    border-radius: 5px;
+}
+header .active a{
+    color: #2d007b !important;
+}
+header .active:hover{
+    background-color: #fff !important;
+    color: #2d007b !important;
+}
+
+header .nav-link{
+    text-transform: uppercase;
+    height: 100%;
+}
+header .nav-link:hover{
+    background-color:#9d77de73;
+    border-radius: 5px;
+}
+/* header .nav-link:before{
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    background-color: #ad2224;
+    bottom: 2px;
+    transform: translateX(-150%);
+}
+.nav-link:hover::before{
+    transform: translateX(0px);
+    transition: 0.7s;
+} */
+.logo img{
+    width: 80px;
+    height: 80px;
+    border-radius:100px;
+    object-fit: cover;
+    /* transform: skew(45deg); */
+
+}
+.logo-container{
+    min-width: 200px;
+    background-color: #fff;
+}
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown-menu{
+    background-color: #fff !important;
+    border-radius: 0px !important;
+    min-width: 200px !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+    border: none !important;
+    
+  }
+   .dropdown-menu .dropdown-item{
+    color: #000000 !important;
+    padding: 10px !important;
+    
+  }
+   .dropdown-menu  .dropdown-item:hover{
+    color: #ffffff !important;
+    transition: 0.2s;
+    background:var(--gradient)
+   
+  }
+/* .logo-container{
+    background-color: #fff;
+    transform: skew(-45deg);
+    min-width: 250px;
+    margin-right: 20px;
+    justify-content: center;
+} */
+
+
+.mobile-nav{
+    background-color: #2d007b !important;
+}
+.mobile-nav ul li{
+    font-size: 1.2rem;
+}
+.mobile-nav ul{
+    padding: 0px;
+    list-style-type: none;
+}
+.mobile-nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.mobile-nav ul li a:hover{
+}

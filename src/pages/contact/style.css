@@ -1,0 +1,46 @@
+.sporti1{
+    background: url(../../../public/images/sporti1/sporti1_banner.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 80vh;
+    background-attachment: fixed !important;
+
+}
+.contact-banner{
+
+}
+.contact-card{
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.contact-main-card:nth-child(1) .contact-card{
+    background-color: #FFA447;
+}
+.contact-main-card:nth-child(2) .contact-card{
+    background-color: #FF6868;
+}
+.contact-main-card:nth-child(3) .contact-card{
+    background-color: #3468C0;
+}
+.contact-from input,  .contact-from textarea{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border: 1px solid lightgray;
+}
+/* .contact-from input:hover, .contact-from textarea:hover{
+    border: 1px solid #005eff;
+    background-color: #72a6ff0b;
+} */
+
+.contact-card:hover{
+    background-color: #fff !important;
+    box-shadow: 0px 0px 18px #ccc;
+    color: #000 !important;
+    cursor: pointer;
+    transition: 0.8s;
+}

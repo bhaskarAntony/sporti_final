@@ -1,0 +1,318 @@
+
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --header-bg-color: #f1f1f1;
+  --dark-color:#191717;
+  --gradient:linear-gradient(45deg, #282972, #522872)
+}
+
+[data-theme='dark'] {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --dark-color:#191717;
+  --header-bg-color: #333333;
+  --gradient:linear-gradient(45deg, #282972, #522872)
+}
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo:wght@600&family=DM+Sans:opsz@9..40&family=Fira+Sans:wght@900&family=Libre+Barcode+39+Extended+Text&family=Libre+Franklin&family=Noto+Sans:wght@300&family=Poppins:wght@400;500;800&family=Press+Start+2P&family=Rubik:wght@500&family=Tilt+Prism&family=Wallpoet&family=Work+Sans:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
+
+*{
+  font-family: "DM Sans",sans-serif !important;
+
+}
+.form *{
+  text-transform:capitalize !important;
+}
+input[type="email"], input[type="date"], input[type="datetime-local"] {
+  text-transform:lowercase !important;
+}
+
+input[type="email"]::placeholder{
+  text-transform: capitalize !important;
+}
+/* .app{
+background-color: var(--bg-color) !important; 
+} */
+/* .sporti1{
+  background: url(../public/images/sporti1/sport1_cover.jpg) no-repeat center top !important;
+  background-size: contain;
+  min-height: 70vh !important;
+} */
+
+/* *{
+  color: #fff !important;
+  background: #0c0c0c !important;
+}
+.app h1{
+  color: #F6D776 !important;
+} */
+.sporti2{
+  background: url('../public/images/sporti2/sporti2_banner.jpg') no-repeat center !important;
+  background-size: cover !important;
+  min-height: 80vh !important;
+  background-attachment: fixed !important;
+}
+.table-container {
+  max-height: 300px; /* Adjust this height as needed */
+  overflow: auto; /* Prevent horizontal scrolling */
+  margin-top: 15px; /* Space between elements */
+}
+
+/* Optional: Add styling to handle table appearance */
+.confirm-service *, .confirm-service ul li{
+  text-align: start;
+}
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+
+.loading-img{
+  width: 80px;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+.main-btn{
+border:none ;
+padding: 10px;
+min-width: 150px;
+background-color: #fe9013;
+font-size: 1.2rem;
+border-radius: 100px;
+color: #fff;
+text-decoration: none;
+text-align: center;
+}
+.btn-outline{
+  border: none;
+  background-color: #bbbaba63;
+  padding: 10px;
+  min-width: 150px;
+  border-radius: 100px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-align: center;
+}
+.skew-container{
+  display: flex;
+  width: 100%; align-items: end;
+}
+.skew-left{
+  flex: 1;
+  background-color: #f80408;
+  /* transform: skew(45deg) translateX(-100px); */
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 100%;
+}
+.skew-container h1{
+  /* transform: skew(-45deg); */
+}
+.skew-right{
+  flex: 2;
+  background:var(--gradient) !important;
+  /* transform: skew(45deg) translateX(-100px); */
+  min-height: 100px;
+  width: 100%;
+  color: #fff !important;
+
+}
+.skew-right h1{
+  margin-left: 20px;
+}
+.more{
+  transform: skew(-45deg) translateX(50px) !important;
+}
+.contact-banner{
+  display: flex;
+  align-items: end;
+}
+.subtitle{
+  position: relative;
+  color: gray;
+  margin-bottom: 30px;
+  text-transform: capitalize;
+}
+.title{
+  text-transform: uppercase;
+}
+
+.subtitle::before{
+  content: "";
+  width: 100px;
+  height: 3px;
+  background-color: #F6D776;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.blue-btn{
+  border: none;
+  padding: 10px;
+  min-width: 150px;
+  background:var(--gradient) !important;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  min-width: 150px;
+  display: block;
+  max-width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+.w-100{
+  max-width: 100% !important;
+}
+
+/* button:hover{
+  opacity: 0.5 !important;
+} */
+
+.form-control, .form-select{
+  padding: 10px !important;
+  border-radius: 2px !important;
+}
+.form-control:focus, .form-select:focus{
+  box-shadow: none !important;
+}
+
+.carousel-indicators [data-bs-target]{
+  width: 30px !important;
+  display: none;
+}
+.fs-6{
+  text-align: justify !important;
+}
+
+.loading{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(12, 12, 12, 0.762);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fs{
+  font-size: 3rem !important;
+}
+.bg-main{
+  background: var(--gradient);
+}
+
+.light{
+  background-color: lavender;
+}
+
+
+ @media (max-width:768px){
+  .skew-left, .skew-right, .skew-container h1{
+    transform: skew(0deg) translateX(0px);
+    justify-content: center;
+  }
+  .skew-container{
+    flex-direction: column;
+  }
+ }
+ 
+
+ 
+.f1 {
+  font-size: calc(1.375rem + 1.5vw)
+}
+
+.f2 {
+  font-size: calc(1.325rem + .9vw) 
+}
+
+.f3 {
+  font-size: calc(1.3rem + .6vw) 
+}
+
+.f4 {
+  font-size: calc(1.275rem + .3vw) 
+}
+
+.f5 {
+  font-size: 1.25rem 
+}
+
+.f6 {
+  font-size: 1rem
+}
+
+@media (min-width:1200px) {
+  .f1 {
+      font-size: 2.5rem 
+  }
+
+  .f2 {
+      font-size: 2rem 
+  }
+
+  .f3 {
+      font-size: 1.75rem 
+  }
+
+  .f4 {
+      font-size: 1.5rem 
+  }
+}
+
+.language{
+  z-index: 1020;
+}
+
+.high-contrast *, .high-contrast a, .high-contrast *::before{
+  color: #F6D776 !important;
+  background:#000000 !important;
+}
+.high-contrast button, .high-contrast .main-btn{
+  background: #F6D776 !important;
+  color: #0c0c0c !important;
+}
+.gray-text{
+  color: #777777;
+}
+.gradient{
+  background: var(--gradient) ;
+}
+.fbtn{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.high-contrast .dropdown-menu, .high-contrast .dropdown-item{
+  background: #F6D776 !important;
+}
+.high-contrast .dropdown-item:hover{
+  background: #000000 !important;
+  color: #F6D776 !important;
+}
+.about .ourteam, .about table{
+  text-align:left !important;
+}

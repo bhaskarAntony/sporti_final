@@ -1,0 +1,61 @@
+.s1 ul{
+    list-style-type: none;
+    padding: 0px;
+}
+.s1 ul li{
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+.start{
+    background-color: #251910;
+    color: #fff;
+}
+
+.service-card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.service-card img{
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+.faqs .accordion-button{
+    background-color: transparent !important;
+    padding: 30px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.faqs .accordion-item{
+    background-color: #fff !important;
+    border-radius: 20px !important;
+    border: 2px solid #feba76;
+}
+
+.book-now{
+    background-color: #251910;
+    color: #fff;
+    text-align: center;
+}
+.steps{
+    background-color: aliceblue !important;
+}
+.step-card{
+    padding: 10px;
+}   
+.high-contrast {
+    background: black !important;
+    color: rgb(248, 202, 0) !important;
+  }
+  
+  .high-contrast button {
+    background: white;
+    color: black;
+  }
+  
+
+

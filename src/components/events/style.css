@@ -1,0 +1,7 @@
+.event-card img{
+    height: 250px;
+    object-fit: cover;
+}
+.event-categories{
+    background-color: rgb(222, 245, 255);
+}

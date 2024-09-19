@@ -1,0 +1,45 @@
+.carousel-item{
+    max-height: 80vh;
+    overflow: hidden;
+}
+.carousel-item img{
+    object-fit: cover;
+    max-height: 80vh;
+}
+.carousel-caption{
+    background: #eeeeee59;
+    width: 100%;
+    height: fit-content;
+    left: 0px !important;
+    bottom: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    backdrop-filter: blur(2px);
+    color: #0f0f0f !important;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    background:linear-gradient(45deg, #282972, #522872);
+    padding: 10px !important;
+    opacity: 1 !important;
+    border-radius: 5px;
+}
+
+
+
+
+@media(max-width:768px){
+    .carousel-item{
+        /* height: fit-content; */
+        max-height:fit-content;
+    }
+    .carousel-item img{
+       /* height: fit-content; */
+       max-height:fit-content;
+    }
+    .carousel-caption{
+        position: inherit !important;
+        background: linear-gradient(45deg, #3b246c, #9b56d0);
+        color: #ffffff !important;
+    }
+}

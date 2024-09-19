@@ -1,0 +1,39 @@
+.event-banner {
+    background: linear-gradient(#00000048, #000), url('../../assets//images/event_banner.png') no-repeat center;
+}
+.event-view-banner{
+    min-height: 40vh;
+
+    color: #fff;
+}
+.event-card{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.event-container .offcanvas{
+    min-height:70vh;
+    overflow: auto;
+}
+.login{
+    display: flex;
+    min-height: 80vh;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    width: 400px;
+    padding: 20px;
+}
+
+
+@media(max-width:768px){
+    .book-btn button{
+        width: 100%;
+    }
+    .card{
+        width: 100%;
+    }
+    /* .event-container .offcanvas{
+        min-height:70vh;
+        overflow: auto;
+    } */
+}

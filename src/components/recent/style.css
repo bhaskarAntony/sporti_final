@@ -1,0 +1,16 @@
+.recent-top{
+    padding: 30px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid #faae0b !important;
+    margin-top: 30px;
+}
+.recent-card{
+    min-height: 300px;
+    background-color: #fff;
+    padding: 20px;
+}
+.recent{
+    background-color: #fef2cb;
+}

@@ -1,0 +1,152 @@
+.room-banner, .event-banner{
+    background: linear-gradient(#00000048, #000), url('../../assets//images/gallery_banner_3x.png') no-repeat center;
+    background-size: cover;
+    min-height: 50vh;
+    color: #fff;
+}
+
+.room-book-card{
+    width: 80%;
+    margin: auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transform: translateY(-60px);
+    background-color: #fff;
+    border-radius: 10px;
+}
+.room-book-card .row{
+    width: 100%;
+}
+.room-book-card button{
+    margin-top: 40px;
+    padding: 15px;
+}
+.room-book-card .form-control{
+    padding: 15px;
+    border: none;
+  
+}
+.room-book-card .form-control:focus{
+    box-shadow: none;
+    border: none;
+}
+.room-book-card .input-group{
+    border: 2px solid #d2d1d1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.room-book-card .input-group-text{
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.rooms-inner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.rooms-inner .room-card{
+    flex: 1;
+    min-width: 150px;
+    position: relative;
+}
+.room-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.room-card a{
+  transform: scale(0);
+  transition: 0.7s;
+  padding: 10px;
+  border-radius: 100px;
+}
+.room-card:hover h1{
+  display: none;
+}
+.room-card:hover a{
+    transform: scale(1)
+}
+.rview-right .big{
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.rview-right .small-images img{
+    height: 200px !important;
+    object-fit: cover;
+}
+
+.r-card{
+    min-height: 250px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    position: relative;
+}
+.r-tag{
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(134, 55, 245);
+    padding: 4px 10px;
+    color: #fff;
+    border-radius: 100px;
+
+}
+.r-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+.r-card button{
+    border: none;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 10px;
+}
+.r-card .selected{
+    background-color: rgba(117, 231, 16, 0.367) !important;
+    border: 2px solid #a5f62c !important;
+    color: #fff;
+}
+.r-card .vip{
+    background-color: rgba(255, 255, 0, 0.388);
+    border: 2px solid #e5d70f;
+}
+.booked{
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 2px solid #fc5356;
+ 
+}
+.room-selected{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px;
+    list-style-type: none;
+    list-style-position: inside;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+
+
+
+@media(max-width:768px){
+    .room-book-card{
+        width: 90%;
+    }
+}
