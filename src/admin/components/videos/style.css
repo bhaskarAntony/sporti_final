@@ -1,0 +1,34 @@
+.video{
+    background-color: #0c0c0c;
+}
+.video-container{
+    position: relative;
+    padding: 2px;
+    z-index: 2;
+    overflow: hidden;
+
+}
+.video-container::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(#a233dd, #ff315a, #d71fc2, #1cf0d7, transparent);
+    z-index: -1;
+    left: 0;
+    top: 0;
+    animation: anim 4s linear infinite;
+}
+.video-view{
+    width: 100%;
+    height: 80vh;
+}
+
+@keyframes anim{
+    from{
+        transform: rotate(-360deg) scale(2);
+    }
+    to{
+        transform: rotate(360deg) scale(2);
+    }
+}

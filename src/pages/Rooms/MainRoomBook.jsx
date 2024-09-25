@@ -438,7 +438,7 @@ function MainRoomBook() {
                         {RoomLoader()}
                     </div>
                     <div className="form-group mt-3">
-                        <span htmlFor="noRooms">{selectedLanguage === 'kannada' ? 'ಅತಿಥಿಗಳು' : 'Guests'}</span>
+                        <span htmlFor="noRooms">{selectedLanguage === 'kannada' ? 'ಅತಿಥಿಗಳು' : 'No Rooms'}</span>
                         <input
                             type="number"
                             id="noRooms"

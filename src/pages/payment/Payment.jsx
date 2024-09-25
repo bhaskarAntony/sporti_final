@@ -77,11 +77,20 @@ const Payment = () => {
             Phone: booking.phoneNumber,
             ProductInfo: booking.serviceName,
             AmountPaid: booking.totalCost,
+            DeptAccountCode:"SPORTI1"
         };
 
-        const requestDataString = `K1USRID=${requestData.K1USRID}|K1PWD=${requestData.K1PWD}|Name=${requestData.Name}|AppNo=${requestData.AppNo}|Phone=${requestData.Phone}|Email=${requestData.Email}|ProductInfo=${requestData.ProductInfo}|AmountPaid=${requestData.AmountPaid}`;
+        const requestDataString = `K1USRID=${requestData.K1USRID}|K1PWD=${requestData.K1PWD}|Name=${requestData.Name}|AppNo=${requestData.AppNo}|Phone=${requestData.Phone}|Email=${requestData.Email}|ProductInfo=${requestData.ProductInfo}|AmountPaid=${requestData.AmountPaid}|DeptAccountCode=${requestData.DeptAccountCode} `;
+        console.log(requestDataString);
+        
+        
+        
         const checksum = generateHash512(requestDataString);
+        console.log(checksum);
         const formValue = `${requestDataString}|CheckSum=${checksum}|ReturnURL=https://www.sporti.ksp.gov.in/payment/success/${booking.applicationNo}`;
+
+        console.log(formValue);
+        
 
         const form = document.createElement('form');
         form.id = 'FormPost';
@@ -97,7 +106,7 @@ const Payment = () => {
 
         document.body.appendChild(form);
         if (booking.status != 'pending' || booking.status != 'rejected') {
-            form.submit();
+            // form.submit();
             localStorage.setItem('applicationNo', booking.applicationNo)
         } else {
             openDialog('Error', t.description, true);

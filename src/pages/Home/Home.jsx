@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Recents from '../../components/Recents/Recents'
 import { useLanguage } from '../../context/LangaugeContext'
 import Benefits from '../../data/Benefits'
-import Video from '../../admin/components/videos/Video'
+import Video from '../../admin/components/videos/Video.jsx'
 
 const roomBookingFAQs = [
     {

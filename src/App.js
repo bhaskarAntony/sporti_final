@@ -190,7 +190,7 @@ function App() {
             <Route path='/eventView/:id' element={<EventView />} />
             <Route path='/confirm/details' element={<Confirm />} />
             <Route path='/confirm/room/details' element={<ConfirmRoom />} />
-            <Route path='/watch/video/:sporti' element={<VideoView/>}/>
+            <Route path='/view/video/:sporti' element={<VideoView/>}/>
             <Route path='/payment/success/:applicationNo' element={<RedirectPayment/>}/>
 
           {/* <Route element={<ProtectedRoute />}>

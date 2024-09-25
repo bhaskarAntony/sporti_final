@@ -27,7 +27,7 @@ import MainHallBookings from './pages/bookings/MainHallBookings';
 import RoomDetails from './pages/view/RoomDetails';
 import AllRooms from './components/dashboards/AllRooms';
 import EditRoom from './components/dashboards/EditRoom';
-import VideoView from './components/videos/VideoView';
+// import VideoView from './components/videos/VideoView';
 
 
 

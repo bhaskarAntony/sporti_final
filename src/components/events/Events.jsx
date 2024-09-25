@@ -3,6 +3,7 @@ import gallerydata from '../../data/gallery'
 import { Link } from 'react-router-dom'
 import './style.css'
 import { useLanguage } from '../../context/LangaugeContext';
+import Video from '../../admin/components/videos/Video';
 
 function Events() {
     const { isKannada } = useLanguage();
@@ -43,6 +44,7 @@ function Events() {
                     ))}
                 </div>
             </div>
+            <Video/>
         </div>
     )
 }
