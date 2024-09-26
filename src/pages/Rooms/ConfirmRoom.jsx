@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/images/main_logo.svg';
+import logo from '../../assets/images/main_logo.jpg';
 import './style.css';
 import axios from 'axios';
 import Loading from '../../components/popups/Loading';
@@ -132,7 +132,7 @@ function ConfirmRoom() {
                 const { success, applicationNo } = response.data;
                 if (success) {
                     setIsLoading(false);
-                    alert(`Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS. Please note your Booking ID No ${response.data.user.applicationNo} for reference`)
+                   
                     openDialog('Success', `${selectedLanguage === 'kannada' ? 'ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿಯನ್ನು ನಿರ್ವಹಕನಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ, ಇದು ಒಬ್ಬ ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೋಂದಣಿ ಸಂಖ್ಯೆಯನ್ನು ಭಾವಿಸಲು ಗಮನ ನೀಡಿ.' : `Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS. Please note your Booking ID No ${response.data.user.applicationNo} for reference`}`);
                     console.log(response);
                     localStorage.removeItem('roombooking')
@@ -159,10 +159,6 @@ function ConfirmRoom() {
         return `${day}-${month}-${year}`;
     }
     
-
-
-     
-
     return (
         <div className='container-fluid bg-light p-2 confirm-service'>
             <div className="row">
@@ -213,7 +209,7 @@ function ConfirmRoom() {
                         <ul className="p-0" type="none">
                             <li className="fs-6 mb-2">{selectedLanguage === 'english' ? 'Your booking request is being processed by the administrator.' : translateToKannada('Your booking request is being processed by the administrator.')}</li>
                             <li className="fs-6 mb-2">{selectedLanguage === 'english' ? 'You will receive an email and SMS confirmation regarding your booking.' : translateToKannada('You will receive an email and SMS confirmation regarding your booking.')}</li>
-                            <li className="fs-6 mb-2">{selectedLanguage === 'english' ? 'It will take one working day to confirm your request.' : translateToKannada('It will take one working day to confirm your request.')}</li>
+                            <li className="fs-6 mb-2">{selectedLanguage === 'english' ? 'It will take one working day to confirm your request. Based on your room availability.' : translateToKannada('It will take one working day to confirm your request.')}</li>
                             <li className="fs-6 mb-2">{selectedLanguage === 'english' ? 'Please note your Booking ID for future reference after booking.' : translateToKannada('Please note your Booking ID for future reference after booking.')}</li>
                         </ul>
                         <div className="col-md-12 text-center mt-4 d-flex gap-3 justify-content-end">

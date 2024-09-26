@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LangaugeContext';
-import logo from '../../assets/images/main_logo.svg';
+import logo from '../../assets/images/main_logo.jpg';
 import './style.css';
 import axios from 'axios';
 import Loading from '../../components/popups/Loading';

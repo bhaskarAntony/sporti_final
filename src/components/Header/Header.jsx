@@ -3,7 +3,7 @@ import { Link, useLocation} from 'react-router-dom';  // Import Link
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LangaugeContext';
 import { Navbar, Container, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
-import logo from '../../assets/images/main_logo.svg';
+import logo from '../../assets/images/main_logo.jpg';
 import './style.css';
 
 function Header({ toggleTheme, theme }) {

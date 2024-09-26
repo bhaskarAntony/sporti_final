@@ -6,6 +6,7 @@ import { useDialog } from '../components/popups/DialogContext';
 import Loading from '../components/popups/Loading';
 import { useLanguage } from '../context/LangaugeContext';
 import DOMPurify from 'dompurify';
+import logo from '../assets/images/main_logo.jpg'
 
 function sanitizeInput(input, field) {
   // First, sanitize HTML to prevent XSS
@@ -67,7 +68,7 @@ const Login = () => {
       <div className="container card shadow">
         <div className="row align-items-center">
           <div className="col-md-6">
-            <img src="./images/aboutus/smwaus_1.jpg" alt="logo" className="w-100" />
+            <img src={logo} alt="logo" className="w-100" />
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit}>

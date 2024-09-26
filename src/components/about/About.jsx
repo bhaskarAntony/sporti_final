@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLanguage } from '../../context/LangaugeContext'
 import about from '../../data/AboutSection';
+import logo from '../../assets/images/main_logo.jpg'
 
 function About() {
     const {isKannada} = useLanguage();
@@ -20,7 +21,7 @@ function About() {
             </div>
             <div className="col-12 col-md-6 mb-3">
                 <div className="about-right  d-flex align-items-center justify-content-center">
-                    <img src="./images/aboutus/smwaus_1.jpg" alt=""  className='w-75'/>
+                    <img src={logo} alt=""  className='w-75'/>
                 </div>
             </div>
         </div>
