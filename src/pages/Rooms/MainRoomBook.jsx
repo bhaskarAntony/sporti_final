@@ -468,7 +468,7 @@ function MainRoomBook() {
                    
                     <div className="col-md-12 text-center mt-4 d-flex gap-3 justify-content-end">
                                     <button type="button" disabled={rooms.length==0}  className="blue-btn rounded-1 m-0" onClick={ConfirmDetails} style={rooms.length==0?({opacity:'0.5'}):(null)}>
-                                        {selectedLanguage === 'english' ? 'Submit' : 'ಸಲ್ಲಿಸಿ'}
+                                        {selectedLanguage === 'english' ? 'Proceed' : 'ಸಲ್ಲಿಸಿ'}
                                     </button>
                                     <button type="button" className="btn btn-danger rounded-1 ms-2" onClick={() => navigate('/')}>
                                         {selectedLanguage === 'english' ? 'Cancel' : "ರದ್ದುಮಾಡಿ"}

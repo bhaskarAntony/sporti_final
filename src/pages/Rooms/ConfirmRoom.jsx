@@ -214,7 +214,7 @@ function ConfirmRoom() {
                         </ul>
                         <div className="col-md-12 text-center mt-4 d-flex gap-3 justify-content-end">
                             <button type="button" className="blue-btn rounded-1 m-0" onClick={submitForm}>
-                                {selectedLanguage === 'english' ? 'Submit' : translateToKannada('Submit')}
+                                {selectedLanguage === 'english' ? 'Apply' : translateToKannada('Submit')}
                             </button>
                             <button type="button" className="btn btn-danger rounded-1 ms-2">
                                 {selectedLanguage === 'english' ? 'Cancel' : translateToKannada('Cancel')}
