@@ -7,7 +7,7 @@ function VideoView() {
 
   return (
     <div className='p-3 bg-dark'>
-       <video src={ sporti == "sporti1"?"https://firebasestorage.googleapis.com/v0/b/sporti-2e307.appspot.com/o/sporti%20videos%2FSporti_1.mp4?alt=media&token=2d8a24b3-012f-45e5-bdf2-58740e41825b":"https://firebasestorage.googleapis.com/v0/b/sporti-2e307.appspot.com/o/sporti%20videos%2Fsporti_2.mp4?alt=media&token=ded22e20-dcc1-45da-909c-6574320de9a0"} controls autoPlay loop className='video-view'></video>
+       <video src={ sporti == "sporti1"?"https://firebasestorage.googleapis.com/v0/b/sporti-2e307.appspot.com/o/sporti%20videos%2Fsporti_1%20(1).mp4?alt=media&token=65f28e6b-12a2-4f0b-b028-503adc534f0a":"https://firebasestorage.googleapis.com/v0/b/sporti-2e307.appspot.com/o/sporti%20videos%2FSporti_2%20(1).mp4?alt=media&token=c6cf3351-c63a-4958-aa39-7ee8dcad01a2"} controls autoPlay loop className='video-view'></video>
     </div>
   )
 }

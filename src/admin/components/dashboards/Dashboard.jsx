@@ -432,6 +432,19 @@ const yAxisLabel = 'Sales in Units';
         navigate(`/admin/edit/rooms/${formData.applicationNo}`)
     }
   }
+
+  const checkOut = async(id) =>{
+   try {
+    const res =  await axios.patch(`http://localhost:4000/api/sporti/service/${id}/checkout`)
+    if(res.status ==200){
+        toast.success('check out is success');
+    }else{
+        toast.error('check out is failed please try again later...');
+    }
+   } catch (error) {
+    toast.error('check out is failed please try again later...');
+   }
+  }
     return (
         <Container fluid className='dashboard p-3 p-md-5'>
               <div className="row">
@@ -1020,19 +1033,22 @@ const yAxisLabel = 'Sales in Units';
                                               <i class="bi bi-eye-fill" ></i>
                                               </button>
                                              </span>
-                                        <span title="reject booking">
+                                        {/* <span title="reject booking">
                                    <button className="btn btn-danger btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-x-lg"></i></button>
-                                   </span>
+                                   </span> */}
                                         {/* <span title="send reject booking">    <button className="btn btn-success btn-sm"  onClick={() => handleShowModal(item)}>&#8377;<i class="bi bi-check"></i></button></span> */}
                                         <span title="delete confirmed booking"> <button className="btn btn-danger btn-sm" onClick={()=>deleteHandler(item.applicationNo)}><i class="bi bi-trash"></i></button></span>
 
                                        
-                                      {
+                                      {/* {
                                         item?.paymentStatus=== 'pending' || item.paymentStatus === "Pending"?(
                                             <span title="Success Payment"> <button className="btn btn-success btn-sm" onClick={()=>handleSuccessPayment(item)}><i class="bi bi-check"></i></button></span>
                                         ):(null)
-                                      }
-                                       
+                                      } */}
+
+                                    {
+                                        item.isCheckOut?(null):(<span title="Check out"> <button className="btn btn-success btn-sm" onClick={()=>checkOut(item._id)}><i class="bi bi-check"></i>Check out</button></span>)
+                                    }
                                         </div>
                                         </td>
                                     </tr>
