@@ -16,6 +16,7 @@ import { BookingContext } from '../hooks/BookingContext';
 import AllRooms from './AllRooms';
 import BlockRoom from './BlockRoom';
 import ClearRoom from './ClearRoom';
+import BookingsDownload from './BookingsDownload';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, LineElement, PointElement, Title, Tooltip, Legend);
 
@@ -37,6 +38,7 @@ const months = [
 const Dashboard = () => {
     const { Contextbookings, isloading, error, fetchBookings } = useContext(BookingContext);
     const [data, setData] = useState([]);
+    const [selectedBookings, setSelectedBookings] = useState([]);
     const [selectedMonth, setSelectedMonth] = useState(null);
     const [monthlyUsers, setMonthlyUsers] = useState({});
     const [pendingUsers, setPendingUsers] = useState({});
@@ -61,6 +63,46 @@ const Dashboard = () => {
         const [selectedRoomType, setSelectedRoomType] = useState(null);
         const [roomData, setRoomData] = useState({});
         const [formData, setFormData] = useState({});
+
+        const [filterType, setFilterType] = useState('daily');
+
+const filterDataByDay = (data) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  return data.filter(item => new Date(item.checkIn).setHours(0, 0, 0, 0) === today);
+};
+
+const filterDataByWeek = (data) => {
+  const currentDate = new Date();
+  const firstDayOfWeek = currentDate.getDate() - currentDate.getDay();
+  const startOfWeek = new Date(currentDate.setDate(firstDayOfWeek)).setHours(0, 0, 0, 0);
+  const endOfWeek = new Date(currentDate.setDate(firstDayOfWeek + 6)).setHours(23, 59, 59, 999);
+
+  return data.filter(item => {
+    const eventDate = new Date(item.checkIn).getTime();
+    return eventDate >= startOfWeek && eventDate <= endOfWeek;
+  });
+};
+
+
+const filterDataByMonth1 = (data, selectedMonth) => {
+    if (!selectedMonth) return data;
+    const month = selectedMonth.value;
+    return data.filter(item => new Date(item.checkIn).getMonth() + 1 === month);
+  };
+  
+  const getFilteredData = () => {
+    let filteredData = [];
+  
+    if (filterType === 'daily') {
+      filteredData = filterDataByDay(data);
+    } else if (filterType === 'weekly') {
+      filteredData = filterDataByWeek(data);
+    } else if (filterType === 'monthly') {
+      filteredData = filterDataByMonth1(data, selectedMonth);
+    }
+  
+    return filteredData;
+  };
 
 
     
@@ -291,23 +333,64 @@ const yAxisLabel = 'Sales in Units';
         </Card.Text>
     );
 
-    const deleteHandler = (applicationNO) =>{
-      if(window.confirm('Delete Booking?')){
-        setLoading(true)
-        axios.delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${applicationNO}`)
-        .then((res)=>{
-            setLoading(false)
-            toast.success('booking deleted');
-            fetchBookings()
-        })
-        .catch((err)=>{
-            setLoading(false)
-            toast.error(err.message)
-        })
-      }else{
-        toast.info('cancelled')
-      }
+   // Handle checkbox selection
+const handleCheckboxChange = (applicationNo) => {
+    setSelectedBookings((prevSelected) => {
+        if (prevSelected.includes(applicationNo)) {
+            return prevSelected.filter((no) => no !== applicationNo); // Uncheck
+        } else {
+            return [...prevSelected, applicationNo]; // Check
+        }
+    });
+};
+
+// Delete multiple bookings
+const deleteMultipleBookings = () => {
+    if (selectedBookings.length === 0) {
+        toast.info('No bookings selected');
+        return;
     }
+    if (window.confirm('Delete selected bookings?')) {
+        setLoading(true);
+        Promise.all(
+            selectedBookings.map((applicationNo) =>
+                axios.delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${applicationNo}`)
+            )
+        )
+            .then(() => {
+                setLoading(false);
+                toast.success('Selected bookings deleted');
+                fetchBookings(); // Refresh the booking data
+                setSelectedBookings([]); // Clear the selection after deletion
+            })
+            .catch((err) => {
+                setLoading(false);
+                toast.error(err.message);
+            });
+    } else {
+        toast.info('Cancelled');
+    }
+};
+
+// Single delete handler (for reference, kept the same)
+const deleteHandler = (applicationNo) => {
+    if (window.confirm('Delete Booking?')) {
+        setLoading(true);
+        axios
+            .delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${applicationNo}`)
+            .then((res) => {
+                setLoading(false);
+                toast.success('Booking deleted');
+                fetchBookings();
+            })
+            .catch((err) => {
+                setLoading(false);
+                toast.error(err.message);
+            });
+    } else {
+        toast.info('Cancelled');
+    }
+};
     if(loading || isloading){
         return <Loading/>
     }
@@ -447,6 +530,21 @@ const yAxisLabel = 'Sales in Units';
   }
     return (
         <Container fluid className='dashboard p-3 p-md-5'>
+            {/* <div className="filter-buttons">
+                    <button onClick={() => setFilterType('daily')} className="main-btn">Daily</button>
+                    <button onClick={() => setFilterType('weekly')} className="main-btn">Weekly</button>
+                    <button onClick={() => setFilterType('monthly')} className="main-btn">Monthly</button>
+                    </div>
+
+                    <CSVLink 
+                    data={getFilteredData()}
+                    headers={headers}
+                    filename={`booking_data_${filterType}_${selectedMonth ? selectedMonth.label : 'all'}.csv`}
+                    className="main-btn"
+                    >
+                    <i class="bi bi-download"></i> Download Data
+                    </CSVLink> */}
+                    <BookingsDownload bookings={Contextbookings}/>
               <div className="row">
                 <div className="col-md-3 mb-3">
                     <div className="card p-2 border-0 d-flex gap-2 flex-row align-items-center mb-4 h-100">
@@ -792,50 +890,77 @@ const yAxisLabel = 'Sales in Units';
                             <i class="bi bi-download"></i> Download Data
                         </CSVLink>
                         </div>
-                        {
-                            data.length!=0?(
-                                <div className="table-container">
-                                <table>
-                                    <tr>
-                                        <th>Profile</th>
-                                        <th>Name</th>
-                                        <th>Officers Category</th>
-                                        <th>Service</th>
-                                        <th>Action</th>
-                                    </tr>
-                                      {
-                                        data.map((item, index)=>(
-                                          
-                                            
-                                            <tr>
-                                                {/* <td><Avatar sx={{ bgcolor: "green" }}>{(item.username)}</Avatar></td> */}
-                                                <td><img src="https://www.uniquemedical.com.au/wp-content/uploads/2024/03/Default_pfp.svg.png" alt="" /></td>
-                                                <td>{item.username}</td>
-                                                <td>{item.serviceName =="Room Booking"?item.roomType:item.serviceType}</td>
-                                                <td>{item.serviceName}</td>
-                                                <td className=''>
-                                              <div className="d-flex gap-3 flex-wrap h-100">
-                                              {/* <i class="bi bi-pencil-fill fs-4 text-success"></i> */}
-                                             <span title="view booking">
-                                             <button className="btn btn-dark btn-sm" onClick={()=>gotoViewDetails(item)}>
-                                              <i class="bi bi-eye-fill" ></i>
-                                              </button>
-                                              {/* <Link to={`/payment/${item.applicationNo}`}>Pay</Link> */}
-                                             </span>
-                                               <button className="btn btn-danger btn-sm" onClick={()=>deleteHandler(item.applicationNo)}> <i class="bi bi-trash" ></i></button>
-                                              </div>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    }
-                                  </table>
-                                </div>
-                            ):(
-                                <div className="col-md-3 m-auto">
-                                <img src="https://img.freepik.com/premium-vector/access-documents-that-are-cloud-storage-is-closed-data-protection-flat-vector-illustration_124715-1657.jpg?w=740" className='w-100' alt="" />
-                              </div>
-                            )
-                        }
+                        <>
+        <div className="d-flex justify-content-between">
+            <button
+                className="btn btn-danger mb-3"
+                onClick={deleteMultipleBookings}
+                disabled={selectedBookings.length === 0}
+            >
+                Delete Selected
+            </button>
+        </div>
+
+        {data.length !== 0 ? (
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Profile</th>
+                            <th>Name</th>
+                            <th>Officers Category</th>
+                            <th>Service</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.map((item, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedBookings.includes(item.applicationNo)}
+                                        onChange={() => handleCheckboxChange(item.applicationNo)}
+                                    />
+                                </td>
+                                <td>
+                                    <img
+                                        src="https://www.uniquemedical.com.au/wp-content/uploads/2024/03/Default_pfp.svg.png"
+                                        alt=""
+                                    />
+                                </td>
+                                <td>{item.username}</td>
+                                <td>{item.serviceName === 'Room Booking' ? item.roomType : item.serviceType}</td>
+                                <td>{item.serviceName}</td>
+                                <td className="">
+                                    <div className="d-flex gap-3 flex-wrap h-100">
+                                        <button className="btn btn-dark btn-sm" onClick={() => gotoViewDetails(item)}>
+                                            <i className="bi bi-eye-fill"></i>
+                                        </button>
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => deleteHandler(item.applicationNo)}
+                                        >
+                                            <i className="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        ) : (
+            <div className="col-md-3 m-auto">
+                <img
+                    src="https://img.freepik.com/premium-vector/access-documents-that-are-cloud-storage-is-closed-data-protection-flat-vector-illustration_124715-1657.jpg?w=740"
+                    className="w-100"
+                    alt=""
+                />
+            </div>
+        )}
+    </>
                     </div>
                 </div>
                 <div className="col-md-12 mt-4">

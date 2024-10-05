@@ -97,17 +97,17 @@ function ConfirmRoom() {
         switch (formData.roomType) {
             case 'Family':
                 roomPrice = formData.serviceType === 'Officers from Karnataka State' ? 1600 :
-                            formData.serviceType === 'Officers from Other States' ? 2100 :
+                            formData.serviceType === 'Officers from Other State' ? 2100 :
                             formData.serviceType === 'Others' ? 'NO' : 0;
                 break;
             case 'VIP':
                 roomPrice = formData.serviceType === 'Officers from Karnataka State' ? 1300 :
-                            formData.serviceType === 'Officers from Other States' ? 1600 :
+                            formData.serviceType === 'Officers from Other State' ? 1600 :
                             formData.serviceType === 'Others' ? 2700 : 0;
                 break;
             case 'Standard':
                 roomPrice = formData.serviceType === 'Officers from Karnataka State' ? 800 :
-                            formData.serviceType === 'Officers from Other States' ? 1100 :
+                            formData.serviceType === 'Officers from Other State' ? 1100 :
                             formData.serviceType === 'Others' ? 1600 : 0;
                 break;
             default:
@@ -126,17 +126,21 @@ function ConfirmRoom() {
     const submitForm = (e) => {
         e.preventDefault();
       
-        setIsLoading(true);
+        setIsLoading(true);//https://sporti-backend-live-p00l.onrender.com
         axios.post('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/room/book', formData)
             .then(response => {
-                const { success, applicationNo } = response.data;
+                const { success} = response.data;
                 if (success) {
                     setIsLoading(false);
                    
-                    openDialog('Success', `${selectedLanguage === 'kannada' ? 'ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿಯನ್ನು ನಿರ್ವಹಕನಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ, ಇದು ಒಬ್ಬ ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೋಂದಣಿ ಸಂಖ್ಯೆಯನ್ನು ಭಾವಿಸಲು ಗಮನ ನೀಡಿ.' : `Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS. Please note your Booking ID No ${response.data.user.applicationNo} for reference`}`);
+                  try {
+                    openDialog('Success', `${selectedLanguage === 'kannada' ? 'ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿಯನ್ನು ನಿರ್ವಹಕನಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ, ಇದು ಒಬ್ಬ ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೋಂದಣಿ ಸಂಖ್ಯೆಯನ್ನು ಭಾವಿಸಲು ಗಮನ ನೀಡಿ.' : `Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS.`}`);// Please note your Booking ID No ${response.data.user.applicationNo} for reference
                     console.log(response);
-                    localStorage.removeItem('roombooking')
                     navigate('/');
+                  } catch (error) {
+                        console.log(error);
+                        
+                  }
                 } else {
                     setIsLoading(false);
                     openModal('Error', selectedLanguage === 'kannada' ? 'ಬುಕ್ಕಿಂಗ್ ವಿಫಲವಾಗಿದೆ, ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.' : 'Booking failed, please try again.');
@@ -184,7 +188,7 @@ function ConfirmRoom() {
                                         <th>SI.No</th>
                                         <th>{selectedLanguage === 'english' ? 'Room Type' : translateToKannada('Hall type')}</th>
                                         <th>{selectedLanguage === 'english' ? 'Officers Category' : translateToKannada('Officers Category')}</th>
-                                        <th>{selectedLanguage === 'english' ? 'No.Guests' : translateToKannada('Approximate No of guests')}</th>
+                                        <th>{selectedLanguage === 'english' ? 'No.rooms' : translateToKannada('Approximate No of guests')}</th>
                                         <th>{selectedLanguage === 'english' ? 'No.Days' : translateToKannada('Event end date')}</th>
                                         <th>{selectedLanguage === 'english' ? 'Per Room' : translateToKannada('Total Cost (₹)')}</th>
                                     </tr>
@@ -194,7 +198,7 @@ function ConfirmRoom() {
                                         <td>01</td>
                                         <td>{formData.roomType}</td>
                                         <td>{formData.serviceType}</td>
-                                        <td>{formData.noGuests} guests</td>
+                                        <td>{formData.noRooms} guests</td>
                                         <td>{numberOfDays} days</td>
                                         <td>&#8377;{totalCost / numberOfDays}/-</td>
                                     </tr>

@@ -85,3 +85,65 @@
     background: rgba(113, 252, 155, 0.admin .452);
     color: rgb(2, 104, 41);
 }
+/* DatePickerStyles.css */
+
+.date-picker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .form-group.date input {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-group.date input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .react-datepicker__header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected {
+    background-color: #007bff !important;
+    color: white !important;
+  }
+  
+  .react-datepicker__day:hover {
+    background-color: #007bff33;
+  }
+  
+  .react-datepicker__month-year-dropdown-container {
+    color: black;
+  }
+  
+  .react-datepicker__triangle {
+    display: none; /* Hide the triangle */
+  }
+  .modal-content{
+    padding: 30px !important;
+    border-radius: 0px !important;
+  }
+  .modal-content .modal-header, .modal-content .modal-footer{
+    border: 0 !important;
+  }
+  .modal-content .form-control, .modal-content .form-select{
+    margin-top: 10px;
+  }

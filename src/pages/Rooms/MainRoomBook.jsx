@@ -333,7 +333,7 @@ function MainRoomBook() {
                                         <Dropdown.Item eventKey="Officers from Karnataka State">
                                             {selectedLanguage === 'kannada' ? 'ಕರ್ನಾಟಕದ ಅಧಿಕಾರಿಗಳು' : ' Officers of Karnataka State'}
                                         </Dropdown.Item>
-                                        <Dropdown.Item eventKey="Officers from Other States">
+                                        <Dropdown.Item eventKey="Officers from Other State">
                                             {selectedLanguage === 'kannada' ? 'ಇತರೆ ರಾಜ್ಯಗಳ ಅಧಿಕಾರಿಗಳು' : ' ⁠Officers from other Cadres'}
                                         </Dropdown.Item>
                                         <Dropdown.Item eventKey="Others">

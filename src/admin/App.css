@@ -10,6 +10,9 @@
 [type="email"], [type="data"], [type="datetime-local"]{
     text-transform: lowercase !important;
 }
+.form-control{
+  text-transform: none !important;
+}
 .admin .app{
     max-height: 100vh !important;
     overflow: hidden;
