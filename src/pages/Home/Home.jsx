@@ -86,7 +86,7 @@ const fontSizeClasses = [
       <Helmet>
                 <title>SPORTI - Senior Police Officers Research and Training Institute</title>
                 <meta name="description" content="SPORTI - Senior Police Officers Research and Training Institute offers comprehensive services including training, accommodation, event hosting, dining, gym facilities, and sports like badminton, table tennis, billiards, and hockey for Karnataka's police officials."/>
-                <meta name="keywords" content="SPORTI, Senior Police Officers Research and Training Institute, Karnataka Police, police training, accommodation, rooms, conference facilities, event hosting, event hall, dining, gym, badminton, table tennis, billiards, hockey, Bengaluru"/>
+                <meta name="keywords" content="SPORTI, SPORTI MESS, sporti mess, SPORTI mess, Senior Police Officers Research and Training Institute, Karnataka Police, police training, sporti accommodation, sporti rooms, sporti conference facilities, sporti event hosting, sporti event hall, sporti dining, sporti gym, sporti badminton, sporti table tennis, sporti billiards, sporti hockey, sporti Bengaluru, SPORTI accommodation, SPORTI rooms, SPORTI conference facilities, SPORTI event hosting, SPORTI event hall, SPORTI dining, SPORTI gym, SPORTI badminton, SPORTI table tennis, SPORTI billiards, SPORTI hockey, SPORTI Bengaluru"/>
                 <meta name="author" content="SPORTI" />
                 <meta name="robots" content="index, follow" />
             </Helmet>
