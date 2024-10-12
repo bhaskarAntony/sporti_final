@@ -7,6 +7,7 @@ import Recents from '../../components/Recents/Recents'
 import { useLanguage } from '../../context/LangaugeContext'
 import Benefits from '../../data/Benefits'
 import Video from '../../admin/components/videos/Video.jsx'
+import { Helmet } from 'react-helmet';
 
 const roomBookingFAQs = [
     {
@@ -82,6 +83,13 @@ const fontSizeClasses = [
   
     return (
       <div>
+      <Helmet>
+                <title>SPORTI - Senior Police Officers Research and Training Institute</title>
+                <meta name="description" content="SPORTI - Senior Police Officers Research and Training Institute offers comprehensive services including training, accommodation, event hosting, dining, gym facilities, and sports like badminton, table tennis, billiards, and hockey for Karnataka's police officials."/>
+                <meta name="keywords" content="SPORTI, Senior Police Officers Research and Training Institute, Karnataka Police, police training, accommodation, rooms, conference facilities, event hosting, event hall, dining, gym, badminton, table tennis, billiards, hockey, Bengaluru"/>
+                <meta name="author" content="SPORTI" />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
         <Hero />
         <marquee behavior="scroll" direction="left" scrollamount="10" className='d-block p-1 text-white bg-danger'>
           {
