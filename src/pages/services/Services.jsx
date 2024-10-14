@@ -9,6 +9,7 @@ import sporti1Menu from '../../components/documents/SPORTI1_menu_n.pdf'
 import sporti2Menu from '../../components/documents/sporti2_menu.pdf'
 import sporti1banner from '../../assets/images/banners/sporti1_banner.jpg'
 import sporti2banner from '../../assets/images/banners/sporti2_banner.jpg'
+import { Helmet } from 'react-helmet';
 
 function Services() {
   const { sporti } = useParams(); // Destructure sporti from useParams()
@@ -42,6 +43,12 @@ function Services() {
 
   return (
     <div className='services'>
+      <Helmet>
+      <title>SPORTI Services - Accommodation, Conference Halls, Dining</title>
+      <meta name="description" content="Discover SPORTI's range of services including VIP accommodations, conference halls, event spaces, and dining for senior police officers."/>
+      <meta name="keywords" content="SPORTI services, Accommodation, Conference Hall, Dining, Badminton, Gym, Mini Theatre, Police Events"/>
+      <meta name="robots" content="index,follow"/>
+    </Helmet>
       <div className={`contact-banner `}>
         <img src={service.title== 'SPORTI-1'?(sporti1banner):(sporti2banner)} alt="sporti" className="w-100 sporti-banner" />
 
@@ -52,7 +59,12 @@ function Services() {
                     <h1 className="fs-2 fw-bold">{isKannada ? 'ಸೇವೆಗಳು' : 'SERVICES'}</h1>
                 </div>
                 <div className="skew-right d-flex align-items-center">
-                <h1 className="fs-2 fw-bold title">{isKannada?(service.title_kn):(service.title)}</h1>
+                  <h1 className="fs-2 fw-bold title">
+              {isKannada
+                ? `ಸೀನಿಯರ್ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗಾಗಿ ${service.title_kn} ಪ್ರೀಮಿಯರ್ ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ`
+                : `Explore ${service.title} Premier Services for Senior Police Officers`}
+            </h1>
+
                 </div>
             </div>
                     <div className="row p-2 p-md-5">
@@ -72,7 +84,7 @@ function Services() {
             {service.services.map((item, index) => (
               <div className={`row p-3 rounded-3 mb-4 align-items-center ${index % 2 === 0 ? 'order-1' : 'order-2'}`} key={index}>
                 <div className="col-12 col-md-3">
-                  <img src={item.image} alt="" className="w-100 mb-3 rounded" onClick={()=>openModal(item.image, item.title_en)} />
+                  <img src={item.image} alt={isKannada ?(`SPORTI ${item.title_kn}`):(`SPORTI ${item.title}`)} className="w-100 mb-3 rounded" onClick={()=>openModal(item.image, item.title_en)} />
                 </div>
                 <div className="col-12 col-md-9">
                   <h1 className="fs-4 title fw-bold">{isKannada ?(item.title_kn):(item.title)}</h1>
@@ -106,7 +118,7 @@ function Services() {
                 {service.services.map((item, index) => (
                   <div className="col-6" key={index}>
                     <div className="service-card">
-                      <img src={item.image} alt="" className="w-100 h-100" onClick={()=>openModal(item.image, item.title_en)} />
+                    <img src={item.image} alt={isKannada ?(`SPORTI ${item.title_kn}`):(`SPORTI ${item.title}`)} className="w-100 mb-3 rounded" onClick={()=>openModal(item.image, item.title_en)} />
                       <div className="service-info text-center">
                         <span className="fs-6 text-white">{item.title_en}</span>
                       </div>
