@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import contactInfo from '../../data/contactinfo';
 import Loading from '../../components/popups/Loading';
 import { useLanguage } from '../../context/LangaugeContext';
+import { Helmet } from 'react-helmet';
 
 function Contact() {
   const { sporti } = useParams(); // Destructure sporti from useParams()
@@ -24,6 +25,11 @@ function Contact() {
 
   return (
     <div className='contact'>
+      <Helmet>
+      <title>Contact Us - SPORTI</title>
+      <meta name="description" content="Get in touch with SPORTI for inquiries about our services for Senior Police Officers, events, and training programs." />
+      <meta name="keywords" content="Contact SPORTI, Senior Police Officers Research and Training Institute, contact information, inquiries, police training services, Karnataka Police" />
+      </Helmet>
       <div className='contact-banner'>
         <div className="skew-container">
           <div className="skew-left">

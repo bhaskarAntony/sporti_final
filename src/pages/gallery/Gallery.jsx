@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap';
 import './style.css';
 import LazyLoad from 'react-lazy-load';
 import { useLanguage } from '../../context/LangaugeContext';
+import { Helmet } from 'react-helmet';
 
 function Gallery() {
     const {isKannada} = useLanguage()
@@ -39,6 +40,11 @@ function Gallery() {
 
     return (
         <div className="gallery">
+            <Helmet>
+            <title>Gallery - SPORTI</title>
+            <meta name="description" content="Explore the gallery of SPORTI, showcasing events, training programs, and facilities for Senior Police Officers." />
+            <meta name="keywords" content="SPORTI gallery, Senior Police Officers Research and Training Institute, police events, training sessions, facilities, Karnataka Police" />
+            </Helmet>
             <div className="contact-banner">
                 <div className="skew-container">
                     <div className="skew-left">

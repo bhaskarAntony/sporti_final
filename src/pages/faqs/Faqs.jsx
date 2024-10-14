@@ -3,12 +3,18 @@ import './style.css';
 import faqs from '../../data/faqs';
 import Feedback from '../../components/feedback/Feedback';
 import { useLanguage } from '../../context/LangaugeContext';
+import { Helmet } from 'react-helmet';
 
 function Faqs() {
   const { isKannada } = useLanguage();
 
   return (
     <div>
+      <Helmet>
+      <title>Frequently Asked Questions - SPORTI</title>
+      <meta name="description" content="Find answers to common questions about SPORTI services, events, and facilities for Senior Police Officers." />
+      <meta name="keywords" content="SPORTI FAQs, Senior Police Officers Research and Training Institute, police training questions, event inquiries, Karnataka Police" />
+      </Helmet>
       <div className="faqs-page">
         <div className="contact-banner">
           <div className="skew-container">
