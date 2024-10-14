@@ -60,9 +60,7 @@ function Services() {
                 </div>
                 <div className="skew-right d-flex align-items-center">
                   <h1 className="fs-2 fw-bold title">
-              {isKannada
-                ? `ಸೀನಿಯರ್ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗಾಗಿ ${service.title_kn} ಪ್ರೀಮಿಯರ್ ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ`
-                : `Explore ${service.title} Premier Services for Senior Police Officers`}
+             {isKannada ?(service.title_kn):(service.title)}
             </h1>
 
                 </div>
@@ -76,7 +74,11 @@ function Services() {
       <div className="container bg-white p-2 py-5">
         <div className="text-center mb-5">
           <i className="bi bi-stars fs-2 text-warning"></i>
-          <h1 className="fs-2 fw-bold title">{isKannada?(service.title_kn):(service.title)}</h1>
+          <h1 className="fs-2 fw-bold title">
+              {isKannada
+                ? `ಸೀನಿಯರ್ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗಾಗಿ ${service.title_kn} ಪ್ರೀಮಿಯರ್ ಸೇವೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ`
+                : `Explore ${service.title} Premier Services for Senior Police Officers`}
+            </h1>
           <span className="fs-6 subtitle d-block">{service.subtitle}</span>
         </div>
         <div className="row mt-4">
