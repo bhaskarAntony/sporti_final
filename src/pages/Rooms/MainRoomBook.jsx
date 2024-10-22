@@ -57,21 +57,44 @@ function MainRoomBook() {
         }
     }, [])
 
-    useEffect(()=>{
-        const fetchRooms = async() =>{
-            setRoomLoading(true)
-           try {
-            const res = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`)
-            setRooms(res.data.filter((item, index)=>!item.isBooked));
-            console.log(res);
-            setRoomLoading(false);
-           } catch (error) {
-            setRoomLoading(false);
-            console.log(error);
-           }
-        }
-        fetchRooms()
-    }, [formData.roomType, formData.sporti])
+   useEffect(() => {
+        const fetchRooms = async () => {
+            setRoomLoading(true);
+            try {
+                // Fetch rooms based on selected room type and sporti
+                const roomRes = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`);
+                const roomsData = roomRes.data;
+    
+                // Fetch all bookings for the selected sporti and room type
+                const bookingRes = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
+                const bookings = bookingRes.data;
+    
+                // Filter rooms based on their booking status and availability after checkout
+                const availableRooms = roomsData.filter(room => {
+                    // Find all bookings for the current room
+                    const roomBookings = bookings.filter(booking => booking.roomId === room._id);
+    
+                    // Check if the room is available after all current bookings
+                    const isAvailable = roomBookings.every(booking => {
+                        const checkInDate = new Date(formData.checkIn);
+                        const checkOutDate = new Date(booking.checkOut);
+                        return checkInDate > checkOutDate; // Room is available if checkIn is after all checkOuts
+                    });
+    
+                    // Return true if the room is either never booked or available after all bookings
+                    return !room.isBooked || isAvailable;
+                });
+    
+                setRooms(availableRooms);
+                setRoomLoading(false);
+            } catch (error) {
+                setRoomLoading(false);
+                console.error(error);
+            }
+        };
+    
+        fetchRooms();
+    }, [formData.roomType, formData.sporti, formData.checkIn]);
     
     useEffect(()=>{
         localStorage.setItem('roombooking', JSON.stringify(formData))
