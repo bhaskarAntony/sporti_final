@@ -9,6 +9,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/popups/Loading';
+import { toast } from 'react-toastify';
 
 const EditProfile = () => {
     const {user} = useAuth();
@@ -26,11 +28,15 @@ const EditProfile = () => {
 
   const fetchData = async() => {
     setLoading(true);
+    setLoading(true)
     try {
       const response = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user._id}`);
       console.log(response.data);
       setUserData(response.data);
+      setLoading(false)
     } catch (error) {
+      setLoading(false)
+      toast.error('Error fetching user data')
       console.error('Error fetching user data:', error);
       setError('Failed to fetch user data');
     } finally {
@@ -41,9 +47,14 @@ const EditProfile = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if(loading){
+    return <Loading/>
+  }
  
 
   const handleSave = async() => {
+    setLoading(true);
     // Validate form data before saving
     if (!userData.name || !userData.email) {
       alert("Name and email are required");
@@ -53,17 +64,24 @@ const EditProfile = () => {
     try {
       const response = await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user._id}`, userData);
       console.log(response);
+      setLoading(false)
       console.log('Profile updated:', userData);
-      alert("Profile updated successfully!");
-      window.location.reload();
+      // alert("Profile updated successfully!");
+      toast.success('profile updated successfully.')
+      // window.location.reload();
       navigate('/profile')
+      
 
     } catch (error) {
+      setLoading(false)
       console.error('Error updating profile:', error);
-      alert("Failed to update profile");
+      toast.error('Error on updating profile.')
     }
   };
   
+  if(loading){
+    return <Loading/>
+  }
 
   return (
     <Box className="p-3 p-md-5 bg-main">

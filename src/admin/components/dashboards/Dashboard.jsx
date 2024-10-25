@@ -1032,6 +1032,148 @@ const deleteHandler = (applicationNo) => {
                  }
                     </div>
                 </div>
+
+                <div className="col-md-12 mt-4">
+                    <div className="all-bookings p-3 p-md-5">
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h1 className="fs-5">SPORTI-1 Bookings</h1>
+                        <hr />
+                        <h1 className="fs-6">   {data.filter((item)=>item.sporti == 'SPORTI-1').length} pending Bookings</h1>
+                        <p className="fs-6 text-secondary">Here you can find all SPORTI-1 bookings</p>
+                        </div>
+                        <CSVLink
+                         data={data.filter((item)=>item.sporti == 'SPORTI-1')}
+                        headers={headers}
+                        filename={`booking_data_${selectedMonth ? selectedMonth.label : 'pendingbookings'}.csv`}
+                            className="main-btn"
+                        >
+                            <i class="bi bi-download"></i> Download Data
+                        </CSVLink>
+                        </div>
+
+                        
+                      
+                     
+                 {
+                    data.filter((item) => item.sporti == 'SPORTI-1').length !=0?(
+                        <div className="table-container">
+                        <table>
+                             <tr>
+                                 <th>Profile</th>
+                                 <th>Name</th>
+                                 {/* <th>Cadre</th> */}
+                                 <th>Service</th>
+                                 <th>Action</th>
+                             </tr>
+                               {
+                                 data.map((item, index)=>(
+                                     item.status == "pending"?(
+                                         <tr>
+                                         {/* <td><Avatar sx={{ bgcolor: "green" }}>{(item.username)}</Avatar></td> */}
+                                         <td><img src="https://www.uniquemedical.com.au/wp-content/uploads/2024/03/Default_pfp.svg.png" alt="" /></td>
+                                         <td>{item.username}</td>
+                                         {/* <td>{item.officerCadre}</td> */}
+                                         <td>{item.serviceName}</td>
+                                         <td className=''>
+                                        <div className="d-flex gap-2">
+                                       <span title="confirm booking">
+                                       <button className="btn btn-success btn-sm" onClick={()=>handleConfirmBooking(item)}><i class="bi bi-check-lg"></i>Confirm</button>
+                                       </span>
+                                        <span title="reject booking">
+                                        <button className="btn btn-danger btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-x-lg"></i>Reject</button>
+                                        </span>
+                                        {/* <span title="Send SMS">
+                                        <button className="btn btn-dark btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-send"></i></button>
+                                        </span> */}
+                                        </div>
+                                         </td>
+                                     </tr>
+                                     ):(null)
+                                 ))
+                             }
+                           </table>
+                        </div>
+
+                    ):(
+                            <div className="col-md-3 m-auto">
+                             <img src="https://img.freepik.com/premium-vector/access-documents-that-are-cloud-storage-is-closed-data-protection-flat-vector-illustration_124715-1657.jpg?w=740" className='w-100' alt="" />
+                           </div>
+                    )
+                 }
+                    </div>
+                </div>
+
+                <div className="col-md-12 mt-4">
+                    <div className="all-bookings p-3 p-md-5">
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                        <h1 className="fs-5">SPORTI-2 Bookings</h1>
+                        <hr />
+                        <h1 className="fs-6">   {data.filter((item)=>item.sporti == 'SPORTI-2').length} pending Bookings</h1>
+                        <p className="fs-6 text-secondary">Here you can find all SPORTI-2 bookings</p>
+                        </div>
+                        <CSVLink
+                        data={data.filter((item)=>item.sporti == 'SPORTI-2')}
+                        headers={headers}
+                        filename={`booking_data_${selectedMonth ? selectedMonth.label : 'pendingbookings'}.csv`}
+                            className="main-btn"
+                        >
+                            <i class="bi bi-download"></i> Download Data
+                        </CSVLink>
+                        </div>
+
+                        
+                      
+                     
+                 {
+                    data.filter((item) => item.sporti == 'SPORTI-2').length !=0?(
+                        <div className="table-container">
+                        <table>
+                             <tr>
+                                 <th>Profile</th>
+                                 <th>Name</th>
+                                 {/* <th>Cadre</th> */}
+                                 <th>Service</th>
+                                 <th>Action</th>
+                             </tr>
+                               {
+                                 data.map((item, index)=>(
+                                     item.status == "pending"?(
+                                         <tr>
+                                         {/* <td><Avatar sx={{ bgcolor: "green" }}>{(item.username)}</Avatar></td> */}
+                                         <td><img src="https://www.uniquemedical.com.au/wp-content/uploads/2024/03/Default_pfp.svg.png" alt="" /></td>
+                                         <td>{item.username}</td>
+                                         {/* <td>{item.officerCadre}</td> */}
+                                         <td>{item.serviceName}</td>
+                                         <td className=''>
+                                        <div className="d-flex gap-2">
+                                       <span title="confirm booking">
+                                       <button className="btn btn-success btn-sm" onClick={()=>handleConfirmBooking(item)}><i class="bi bi-check-lg"></i>Confirm</button>
+                                       </span>
+                                        <span title="reject booking">
+                                        <button className="btn btn-danger btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-x-lg"></i>Reject</button>
+                                        </span>
+                                        {/* <span title="Send SMS">
+                                        <button className="btn btn-dark btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-send"></i></button>
+                                        </span> */}
+                                        </div>
+                                         </td>
+                                     </tr>
+                                     ):(null)
+                                 ))
+                             }
+                           </table>
+                        </div>
+
+                    ):(
+                            <div className="col-md-3 m-auto">
+                             <img src="https://img.freepik.com/premium-vector/access-documents-that-are-cloud-storage-is-closed-data-protection-flat-vector-illustration_124715-1657.jpg?w=740" className='w-100' alt="" />
+                           </div>
+                    )
+                 }
+                    </div>
+                </div>
                 <div className="col-md-12 mt-4">
                     <div className="all-bookings p-3 p-md-5">
                     <div className="d-flex justify-content-between align-items-center">

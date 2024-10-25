@@ -7,6 +7,7 @@ import Loading from '../../components/popups/Loading';
 import { useDialog } from '../../components/popups/DialogContext';
 import SuccessPopup from '../../components/popups/SuccessPopup';
 import { useLanguage } from '../../context/LangaugeContext';
+import { toast } from 'react-toastify';
 
 function ConfirmRoom() {
     const location = useLocation();
@@ -131,6 +132,7 @@ function ConfirmRoom() {
             .then(response => {
                 const { success} = response.data;
                 if (success) {
+
                     setIsLoading(false);
                    
                   try {
@@ -138,16 +140,19 @@ function ConfirmRoom() {
                     console.log(response);
                     navigate('/');
                   } catch (error) {
+                    toast.error(error)
                         console.log(error);
                         
                   }
                 } else {
                     setIsLoading(false);
+                    toast.error('something went wrong. please try again later')
                     openModal('Error', selectedLanguage === 'kannada' ? 'ಬುಕ್ಕಿಂಗ್ ವಿಫಲವಾಗಿದೆ, ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.' : 'Booking failed, please try again.');
                 }
             })
             .catch(error => {
                 setIsLoading(false);
+                toast.error('something went wrong. please try agin later.')
                 openModal('Error', selectedLanguage === 'kannada' ? 'ಬುಕ್ಕಿಂಗ್ ವಿಫಲವಾಗಿದೆ, ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.' : 'Booking failed, please try again.');
             });
     };

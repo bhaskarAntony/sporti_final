@@ -62,9 +62,9 @@ function RecentBookings() {
         </Typography>
         <Box mt={2} display="flex" justifyContent="space-between">
           <a href={`/edit/booking/${item.applicationNo}`}>
-          {/* <IconButton>
+          <IconButton>
             <Edit sx={{ color: 'green' }} />
-          </IconButton> */}
+          </IconButton>
           </a>
           <IconButton onClick={()=>goTodetails(item)}>
             <ChevronRight sx={{ color: '#003366' }} />

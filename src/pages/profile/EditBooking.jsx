@@ -107,6 +107,7 @@ function EditBooking() {
             } catch (error) {
                 setRoomLoading(false);
                 console.error(error);
+                toast.error('error please try later')
             }
         };
     
@@ -319,11 +320,13 @@ function EditBooking() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          await axios.put(`http://localhost:4000/api/sporti/service/update/booking/${id}`, formData);
+          await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/update/booking/${id}`, formData);
           alert('updated your booking')
+          toast.success('updated your booking')
           navigate('/recent/bookings'); // Redirect to recent bookings after update
         } catch (error) {
           console.error('Error updating booking:', error);
+          toast.error(`Error updating booking: ${error}`)
         }
       };
     return (

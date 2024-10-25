@@ -7,10 +7,10 @@
 *{
   text-transform: capitalize !important;
 }
-.form *{
+/* .form *{
   text-transform: lowercase !important;
-}
-[type="email"], [type="data"], [type="datetime-local"]{
+} */
+input, .lower{
     text-transform: lowercase !important;
 }
 .form-control{

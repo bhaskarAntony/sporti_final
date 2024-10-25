@@ -22,13 +22,11 @@
 *{
   font-family: "DM Sans",sans-serif !important;
 }
-.form *{
-  text-transform:lowercase !important;
+ *{
+  text-transform:capitalize !important;
 }
 
-input[type="email"], input[type="date"], input[type="datetime-local"] {
-  text-transform:lowercase !important;
-}
+
 
 input[type="email"]::placeholder{
   text-transform: capitalize !important;

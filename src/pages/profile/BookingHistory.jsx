@@ -15,7 +15,7 @@ function BookingHistory() {
   const fetchBookings = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:4000/api/sporti/service/bookings');
+      const response = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
       setBookings(response.data.filter((item) => (item.email).toLowerCase() === user.email));
       setLoading(false);
     } catch (err) {

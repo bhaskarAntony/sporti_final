@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TextField, Grid, Paper, Typography, Button, Box } from '@mui/material';
+import { TextField, Grid, Paper, Typography, Button, Box, Snackbar } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
@@ -8,6 +8,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/popup/Loading';
+import { toast } from 'react-toastify';
 
 const CreateMember = () => {
   // Initial user state (assuming pre-populated data)
@@ -23,6 +25,7 @@ const CreateMember = () => {
   personalmobilenumber:'',
   idCardNo:''
   });
+  const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -35,6 +38,7 @@ const CreateMember = () => {
  
 
   const handleSave = async() => {
+    setLoading(true)
     // Validate form data before saving
     if (!userData.name || !userData.email) {
       alert("Name and email are required");
@@ -44,18 +48,30 @@ const CreateMember = () => {
     try {
       const response = await axios.post(`https://sporti-backend-live-p00l.onrender.com/api/auth/register`, userData);
       console.log(response);
+      setLoading(false);
+    //   showSnack(true, 'Member created successfully!')
+    toast.success('Member created successfully!')
       console.log('Profile updated:', userData);
-      alert("Member created successfully!");
+    //   alert("Member created successfully!");
+    setOpen(true)
       navigate('/admin')
     } catch (error) {
+        setLoading(false);
+        toast.error(`Error member creation.  please check and try later.`)
       console.error('Error member creation:', error);
-      alert("Failed to create member");
+    //   alert("Failed to create member");
     }
   };
+ 
+
+  if(loading){
+    return <Loading/>
+  }
   
 
   return (
     <Box className="p-3 p-md-5 bg-light">
+       
      <div className="row form">
         <div className="col-md-6 m-auto">
         <Paper elevation={3} sx={{ p: 4,  margin: 'auto' }}>

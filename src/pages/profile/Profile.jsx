@@ -6,12 +6,14 @@ import axios from 'axios';
 import './style.css'
 import { ChevronRight, CheckCircle, Pending, History } from '@mui/icons-material';
 import logo from '../../assets/images/main_logo.jpg' //sporti log
+import { useLocation } from 'react-router-dom';
 
 function Profile() {
     const { user } = useAuth();
     const [bookings, setBookings] = useState([]);
         const [loading, setLoading] = useState(false);
         const [error, setError] = useState(null);
+        const location = useLocation();
 
     const fetchBookings = async () => {
         
@@ -29,6 +31,8 @@ function Profile() {
         fetchBookings(); 
       })
 
+   
+
     return (
         <Box sx={{ padding: { xs: 2, md: 5 }, backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
             {/* Profile Header */}
@@ -40,7 +44,7 @@ function Profile() {
                     <Typography variant="h4" color="white">
                         {user?.name || "Not added"}
                     </Typography>
-                    <Typography variant="body1" color="white">
+                    <Typography variant="body1" color="white" className='lower'>
                         <Email sx={{ verticalAlign: 'middle' }} /> {user?.email || "Not added"}
                     </Typography>
                 </Box>
@@ -199,7 +203,7 @@ function Profile() {
         <Paper sx={{ width: '100%', padding: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <CheckCircle sx={{ color: 'green', mr: 2 }} /> {/* Confirmed icon */}
-            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>View My Confirmed Bookings</Typography>
+            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>View My Previous Bookings</Typography>
           </div>
           <a href="/previous/bookings">
           <IconButton>
@@ -214,7 +218,7 @@ function Profile() {
         <Paper sx={{ width: '100%', padding: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Pending sx={{ color: '#FFCC00', mr: 2 }} /> {/* Pending icon */}
-            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>View My Pending Bookings</Typography>
+            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>View My Recent Bookings</Typography>
           </div>
          <a href="/recent/bookings">
          <IconButton>

@@ -56,6 +56,7 @@ import CreateMember from './admin/pages/membership/CreateMember';
 import PrevBookings from './pages/profile/PrevBookings';
 import BookingHistory from './pages/profile/BookingHistory';
 import ViewRoom from './pages/profile/ViewRoom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const location = useLocation();
@@ -184,6 +185,7 @@ function App() {
           <Header1 toggleTheme={toggleTheme} theme={theme} />
         )
        }
+        <ToastContainer/>
         <Routes>
         <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
