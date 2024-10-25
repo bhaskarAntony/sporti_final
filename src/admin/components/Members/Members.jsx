@@ -13,7 +13,7 @@ const Members = () => {
     }, []);
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/admin/get-user-data');
+            const response = await axios.get('http://localhost:5000/api/auth/users');
             setUsers(response.data);
             console.log(response.data)
         } catch (error) {
