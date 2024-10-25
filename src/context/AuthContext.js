@@ -12,7 +12,10 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = Cookies.get('token');
+    // const token = Cookies.get('token');
+    const token = localStorage.getItem('token');
+    console.log(token);
+    
     console.log('token', token);
     if (token) {
       validateToken(token).then(isValid => {
@@ -30,29 +33,44 @@ export const AuthProvider = ({ children }) => {
 
   const validateToken = async (token) => {
     try {
-      const response = await axios.post(`https://sporti-backend-live-1.onrender.com/api/auth/validateToken`, {}, {
-        withCredentials: true
-      });
+      const response = await axios.post(
+        `https://sporti-backend-live-p00l.onrender.com/api/auth/validate`, 
+        {}, 
+        {
+          headers: { Authorization: `Bearer ${token}` },  // Send token in Authorization header
+          withCredentials: true
+        }
+      );
       console.log(response);
-      if (response.status === 200) {
-        setUser(response.data.user);
-        setIsAuthenticated(true);
-        return true;
-      }
-      return false;
+      setUser(response.data.data);
+      setIsAuthenticated(true);
+      return true
+      // if (response.status === 200) {
+      //   setUser(response.data.data);
+      //   setIsAuthenticated(true);
+      //   return true;
+      // }
+      // return false;
     } catch (error) {
       console.error('Token validation error:', error);
       return false;
     }
   };
+  
 
   const login = async (email, password) => {
     console.log(process.env.REACT_APP_BACKEND_URL);//
     try {
-      const response = await axios.post(`https://sporti-backend-live-1.onrender.com/api/auth/login`, { email, password }, { withCredentials: true });
+      const response = await axios.post(`https://sporti-backend-live-p00l.onrender.com/api/auth/login`, { email, password }, { withCredentials: true });
       if (response.status === 200) {
         setIsAuthenticated(true);
+        console.log(response.data.token);
+        
+        // Cookies.set('token', response.data.token)
+        localStorage.removeItem('token');
+        localStorage.setItem('token',response.data.token);
         setUser(response.data.user);
+        console.log(response.data);
         navigate('/');
       }
     } catch (error) {
@@ -61,7 +79,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    Cookies.remove('token');
+    // Cookies.remove('token');
+    localStorage.removeItem('token');
     setIsAuthenticated(false);
     setUser(null);
     navigate('/login');

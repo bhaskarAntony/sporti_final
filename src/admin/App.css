@@ -7,6 +7,9 @@
 *{
   text-transform: capitalize !important;
 }
+.form *{
+  text-transform: lowercase !important;
+}
 [type="email"], [type="data"], [type="datetime-local"]{
     text-transform: lowercase !important;
 }

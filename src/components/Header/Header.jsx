@@ -11,8 +11,10 @@ function Header({ toggleTheme, theme }) {
   const location = useLocation()
   const [show, setShow] = useState(false);
   const [showDropdown2, setShowDropdown2] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   const { isKannada } = useLanguage();
+  console.log('user = ', user);
+  
 
   useEffect(()=>{
     console.log(location.pathname);
@@ -95,12 +97,17 @@ function Header({ toggleTheme, theme }) {
                     </NavDropdown>
                   {/* </>
                 )} */}
-                {/* {!isAuthenticated && (
-                  <Nav.Link as={Link} to="/login">{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Nav.Link>
-                )} */}
+               
               </Nav>
             </div>
           </Navbar.Collapse>
+           {
+            isAuthenticated?(
+              <a href='/profile' className="profile">
+              <h1 className="fs-2 mb-0 fw-bold text-white">{user?.name[0]}</h1>
+            </a>
+            ):(null)
+           }
         </Container>
       </Navbar>
 
@@ -135,9 +142,9 @@ function Header({ toggleTheme, theme }) {
               {/* </> */}
             {/* )} */}
 
-            {/* {!isAuthenticated ? (
-              <li><Link to="/login" onClick={handleClose}>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link></li>
-            ):(<button className="btn btn-danger w-100" onClick={logout}>Logout</button> )} */}
+            {!isAuthenticated ? (
+              <li><Link to="/login" className='btn btn-light' onClick={handleClose}>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link></li>
+            ):(<button className="btn btn-danger w-100" onClick={logout}>Logout</button> )}
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

@@ -52,6 +52,17 @@ header .nav-link:hover{
     transform: translateX(0px);
     transition: 0.7s;
 } */
+ .profile{
+    width: 50px;
+    height: 50px;
+    background-color: #f87314;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: 5px;
+ }
 .logo img{
     width: 80px;
     height: 80px;

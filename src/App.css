@@ -23,8 +23,9 @@
   font-family: "DM Sans",sans-serif !important;
 }
 .form *{
-  text-transform:capitalize !important;
+  text-transform:lowercase !important;
 }
+
 input[type="email"], input[type="date"], input[type="datetime-local"] {
   text-transform:lowercase !important;
 }
@@ -32,6 +33,7 @@ input[type="email"], input[type="date"], input[type="datetime-local"] {
 input[type="email"]::placeholder{
   text-transform: capitalize !important;
 }
+
 /* .app{
 background-color: var(--bg-color) !important; 
 } */

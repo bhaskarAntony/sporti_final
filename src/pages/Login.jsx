@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDialog } from '../components/popups/DialogContext';
 import Loading from '../components/popups/Loading';
@@ -22,6 +22,9 @@ const Login = () => {
   const navigate = useNavigate();
   const { openDialog } = useDialog();
   const { isKannada } = useLanguage();
+  const location = useLocation();
+  console.log(location);;
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +51,9 @@ const Login = () => {
       console.error('Login error:', error.response ? error.response.data : error.message);
       const message = isKannada ? 'ಅಮಾನ್ಯ ಇಮೇಲ್ ಅಥವಾ ಪಾಸ್ವರ್ಡ್' : 'Invalid email or password';
       const details = isKannada ? 'ದಯವಿಟ್ಟು ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ.' : 'Please check the details and try again.';
+
       
+
       openDialog(
         DOMPurify.sanitize(message),
         DOMPurify.sanitize(details),
@@ -67,8 +72,8 @@ const Login = () => {
     <div className="container-fluid p-3 p-md-5">
       <div className="container card shadow">
         <div className="row align-items-center">
-          <div className="col-md-6">
-            <img src={logo} alt="logo" className="w-100" />
+          <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <img src={logo} alt="logo" className="w-75" />
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit}>

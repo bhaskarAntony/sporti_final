@@ -44,10 +44,18 @@ import ConfirmRoom from './pages/Rooms/ConfirmRoom';
 import AdminApp from './admin/App';
 import Feedback from './admin/pages/feedback/Feedback';
 import Login1 from './admin/components/login/Login';
-import ProtectedRoute from './admin/components/privateRoutes/PrivateRoute';
 import Header from './admin/components/appbar/PrimarySearchAppBar';
 import VideoView from './admin/components/videos/VideoView';
 import RedirectPayment from './pages/payment/RedirectPayment';
+import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/profile/Profile';
+import EditProfile from './pages/profile/EditProfile';
+import RecentBookings from './pages/profile/RecentBookings';
+import EditBooking from './pages/profile/EditBooking';
+import CreateMember from './admin/pages/membership/CreateMember';
+import PrevBookings from './pages/profile/PrevBookings';
+import BookingHistory from './pages/profile/BookingHistory';
+import ViewRoom from './pages/profile/ViewRoom';
 
 function App() {
   const location = useLocation();
@@ -70,16 +78,17 @@ function App() {
   const [fontSizeClass, setFontSizeClass] = useState('fs-6');
   const { isAuthenticated, logout, setIsAuthenticated, validateToken } = useAuth();
 
-  // useEffect(() => {
-  //   const token = Cookies.get('token');
-  //   if (token) {
-  //     validateToken(token).then(isValid => {
-  //       if (isValid) {
-  //         setIsAuthenticated(true);
-  //       }
-  //     });
-  //   }
-  // }, [validateToken, setIsAuthenticated]);
+  useEffect(() => {
+    // const token = Cookies.get('token');
+    const token = localStorage.getItem('token');
+    if (token) {
+      validateToken(token).then(isValid => {
+        if (isValid) {
+          setIsAuthenticated(true);
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -114,6 +123,10 @@ function App() {
       setFontSizeIndex(prevIndex => prevIndex + 1);
     }
   };
+
+  // useEffect(()=>{
+    
+  // })
 
   return (
     <div className={`App user-sporti overflow-hidden ${highContrastClass} ${fontSizeClass}`}>
@@ -152,6 +165,9 @@ function App() {
                   }}
               />
           </div>
+          {!isAuthenticated ? (
+              <li><Link to="/login" className=' btn btn-light'>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link></li>
+            ):(<button className="btn btn-danger" onClick={logout}>Logout</button> )}
       </div>
          )
       }
@@ -183,6 +199,8 @@ function App() {
             <Route path='/contact/:sporti' element={<Contact />} />
             <Route path='/terms_and-conditions' element={<Tems_and_conditions />} />
             <Route path='/privacy_policy' element={<Privacy />} />
+
+            <Route element={<ProtectedRoute />}>
             <Route path='/services/:sporti' element={<Services />} />
             <Route path='/payment/:applicationNo' element={<Payment />} />
             <Route path='/room/:sporti' element={<MainRoomBook />} />
@@ -190,8 +208,21 @@ function App() {
             <Route path='/eventView/:id' element={<EventView />} />
             <Route path='/confirm/details' element={<Confirm />} />
             <Route path='/confirm/room/details' element={<ConfirmRoom />} />
-            <Route path='/view/video/:sporti' element={<VideoView/>}/>
-            <Route path='/payment/success/:applicationNo' element={<RedirectPayment/>}/>
+            <Route path='/view/video/:sporti' element={<VideoView />} />
+            <Route path='/payment/success/:applicationNo' element={<RedirectPayment />} />
+            <Route path='/edit/profile' element={<EditProfile />} />
+            <Route path='/recent/bookings' element={<RecentBookings />} />
+            <Route path='/previous/bookings' element={<PrevBookings />} />
+            <Route path='/history' element={<BookingHistory />} />
+            <Route path='/edit/booking/:id' element={<EditBooking />} />
+            <Route path='/view/details' element={<ViewRoom />} />
+          </Route>
+
+
+            <Route path='/profile' element={<Profile/>}/>
+
+
+           
 
           {/* <Route element={<ProtectedRoute />}>
             <Route path='/cart' element={<FoodCart />} />
@@ -210,6 +241,7 @@ function App() {
          </Route> */}
          <Route path='/admin/*' element={<AdminApp />} />
           <Route path='/admin/feedback' element={<Feedback/>} />
+          {/* <Route path='/create/membership' element={<CreateMember/>}/> */}
           <Route path='/admin/login' element={<Login1/>} />
 
 

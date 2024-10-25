@@ -31,6 +31,7 @@ function Header() {
             </NavDropdown> */}
             <a href="/admin/new/room/booking" className='btn btn-light btn-sm p-2 text-dark'>New Room Booking</a>
             <a href="/admin/new/service" className='btn btn-light btn-sm p-2'>New Event Booking</a>
+            <a href="/admin/create/membership" className='btn btn-light btn-sm p-2'>Create Membership</a>
             {
               isAuthenticated?(
                 <button className='btn btn-danger btn-sm p-2' onClick={()=>logout()}>Logout</button>

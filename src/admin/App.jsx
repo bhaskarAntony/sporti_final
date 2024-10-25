@@ -27,6 +27,7 @@ import MainHallBookings from './pages/bookings/MainHallBookings';
 import RoomDetails from './pages/view/RoomDetails';
 import AllRooms from './components/dashboards/AllRooms';
 import EditRoom from './components/dashboards/EditRoom';
+import CreateMember from './pages/membership/CreateMember';
 // import VideoView from './components/videos/VideoView';
 
 
@@ -47,6 +48,7 @@ function AdminApp() {
    <Routes>
      <Route path="/login" element={<Login />} />
      <Route path='/members' element={<Members/>}/>
+    
 
      <Route element={<PrivateRoute/>}>
      <Route path='/' element={<Dashboard/>}/>
@@ -64,12 +66,14 @@ function AdminApp() {
 
       {/* bookings */}
       <Route path='/room/bookings' element={<RoomBookings/>}/>
+      <Route path='/create/membership' element={<CreateMember/>}/>
       <Route path='/main/hall/bookings' element={<MainHallBookings/>}/>
       <Route path='/conference/hall/bookings' element={<ConferenceBookings/>}/>
       <Route path='/barbeque/area/bookings' element={<BarbequeBookings/>}/>
       <Route path='/all/rooms' element={<AllRooms/>}/>
       <Route path='/edit/rooms/:applicationNo' element={<EditRoom/>}/>
       <Route path='/feedbacks' element={<Feedback/>}/>
+    
      
       </Routes>
    </div>

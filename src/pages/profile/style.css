@@ -1,0 +1,86 @@
+.profile-page{
+    min-height: 100vh;
+}
+.edit:hover{
+    background-color: #cccccc4e;
+    cursor: pointer;
+}
+.idCard{
+    background: linear-gradient(30deg, #679d87, #0f0a23, #191543, #679d87);
+    /* min-height: 300px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 10px;
+    color: #fff !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(0, 0, 0, 0.16) 0px -3px 6px, rgba(0, 0, 0, 0.23) 0px -3px 6px;
+    border-radius: 10px;
+    
+}
+.idCard *{
+    letter-spacing: 0.3px;
+}
+.idCard .small{
+    font-size: 0.7rem !important;
+}
+.idCard img{
+    border-radius: 100px;
+}
+.sporti-name{
+    font-weight: lighter !important;
+    font-family:'Courier New', Courier, monospace !important;
+    position: relative;
+    color: #679d87;
+}
+.sporti-name::before{
+    content: '';
+    width: 15px;
+    height: 3px;
+    position: absolute;
+    border-top: 1px solid #679d87;
+    border-bottom: 1px solid #679d87;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+}
+
+.sporti-name::after{
+    content: '';
+    width: 15px;
+    height: 3px;
+    position: absolute;
+    border-top: 1px solid #679d87;
+    border-bottom: 1px solid #679d87;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+}
+.v-small{
+    font-size: 0.7rem;
+    font-weight: lighter !important;
+}
+.bar{
+    width: 150px;
+    height: 0.2px;
+    background-color: #fff;
+    margin: auto;
+ 
+}
+.terms{
+    font-size: 0.7rem;
+    border: 1px solid #fff;
+    padding: 2px 6px;
+    border-radius: 100px;
+    font-weight: bold !important;
+}
+.qr-code{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.green{
+    color: #679d87;
+}
