@@ -373,11 +373,11 @@ const deleteMultipleBookings = () => {
 };
 
 // Single delete handler (for reference, kept the same)
-const deleteHandler = (applicationNo) => {
+const deleteHandler = (id) => {
     if (window.confirm('Delete Booking?')) {
         setLoading(true);
-        axios
-            .delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${applicationNo}`)
+        axios//https://sporti-backend-live-p00l.onrender.com
+            .delete(`http://localhost:4000/api/sporti/service/delete/booking/${id}`)
             .then((res) => {
                 setLoading(false);
                 toast.success('Booking deleted');
@@ -920,8 +920,8 @@ const deleteHandler = (applicationNo) => {
                                 <td>
                                     <input
                                         type="checkbox"
-                                        checked={selectedBookings.includes(item.applicationNo)}
-                                        onChange={() => handleCheckboxChange(item.applicationNo)}
+                                        checked={selectedBookings.includes(item._id)}
+                                        onChange={() => handleCheckboxChange(item._id)}
                                     />
                                 </td>
                                 <td>
@@ -940,7 +940,7 @@ const deleteHandler = (applicationNo) => {
                                         </button>
                                         <button
                                             className="btn btn-danger btn-sm"
-                                            onClick={() => deleteHandler(item.applicationNo)}
+                                            onClick={() => deleteHandler(item._id)}
                                         >
                                             <i className="bi bi-trash"></i>
                                         </button>
@@ -1304,7 +1304,7 @@ const deleteHandler = (applicationNo) => {
                                    <button className="btn btn-danger btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-x-lg"></i></button>
                                    </span> */}
                                         {/* <span title="send reject booking">    <button className="btn btn-success btn-sm"  onClick={() => handleShowModal(item)}>&#8377;<i class="bi bi-check"></i></button></span> */}
-                                        <span title="delete confirmed booking"> <button className="btn btn-danger btn-sm" onClick={()=>deleteHandler(item.applicationNo)}><i class="bi bi-trash"></i></button></span>
+                                        <span title="delete confirmed booking"> <button className="btn btn-danger btn-sm"  onClick={() => deleteHandler(item._id)}><i class="bi bi-trash"></i></button></span>
 
                                        
                                       {/* {
@@ -1379,7 +1379,7 @@ const deleteHandler = (applicationNo) => {
                                       
                                      
                                       <span title="Confirm">   <button className="btn btn-success btn-sm" onClick={()=>handleConfirmBooking(item)}><i class="bi bi-check-lg"></i>Confirm</button></span>
-                                      <span title="delete rejected booking"> <button className="btn btn-danger btn-sm" onClick={()=>deleteHandler(item.applicationNo)}><i class="bi bi-trash"></i>Delete</button></span>
+                                      <span title="delete rejected booking"> <button className="btn btn-danger btn-sm"  onClick={() => deleteHandler(item._id)}><i class="bi bi-trash"></i>Delete</button></span>
                                       {/* <span title="Send SMS">
                                    <button className="btn btn-dark btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-send"></i></button>
                                    </span> */}
@@ -1447,7 +1447,7 @@ const deleteHandler = (applicationNo) => {
                                        <span title="reject booking">
                                    <button className="btn btn-danger btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-x-lg"></i></button>
                                    </span>
-                                      <span title="delete rejected booking"> <button className="btn btn-danger btn-sm" onClick={()=>deleteHandler(item.applicationNo)}><i class="bi bi-trash"></i></button></span>
+                                      <span title="delete rejected booking"> <button className="btn btn-danger btn-sm"  onClick={() => deleteHandler(item._id)}><i class="bi bi-trash"></i></button></span>
                                       <span title="delete rejected booking"> <button className="btn btn-danger btn-sm" onClick={()=>handleRemovePayment(item)}><i class="bi bi-trash"></i>Remove Payment</button></span>
                                       {/* <span title="Send SMS">
                                    <button className="btn btn-dark btn-sm"  onClick={() => handleShowModal(item)}><i class="bi bi-send"></i></button>
