@@ -377,7 +377,7 @@ const deleteHandler = (id) => {
     if (window.confirm('Delete Booking?')) {
         setLoading(true);
         axios//https://sporti-backend-live-p00l.onrender.com
-            .delete(`http://localhost:4000/api/sporti/service/delete/booking/${id}`)
+            .delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${id}`)
             .then((res) => {
                 setLoading(false);
                 toast.success('Booking deleted');
