@@ -180,7 +180,7 @@ function Profile() {
           <Grid item xs={12} md={4}>
             <Card sx={{ padding: 3, backgroundColor: '#3B1E54', textAlign: 'center', color: 'white' }}>
               <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-                {bookings.filter((item) => item.status === 'pending').length}
+                {bookings.filter((item) => item.status === 'confirmed').length}
               </Typography>
               <Typography variant="body1">Previous Bookings</Typography>
             </Card>
