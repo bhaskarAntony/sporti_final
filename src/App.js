@@ -202,7 +202,7 @@ function App() {
             <Route path='/terms_and-conditions' element={<Tems_and_conditions />} />
             <Route path='/privacy_policy' element={<Privacy />} />
 
-            <Route element={<ProtectedRoute />}>
+            {/* <Route element={<ProtectedRoute />}> */}
             <Route path='/services/:sporti' element={<Services />} />
             <Route path='/payment/:applicationNo' element={<Payment />} />
             <Route path='/room/:sporti' element={<MainRoomBook />} />
@@ -218,7 +218,7 @@ function App() {
             <Route path='/history' element={<BookingHistory />} />
             <Route path='/edit/booking/:id' element={<EditBooking />} />
             <Route path='/view/details' element={<ViewRoom />} />
-          </Route>
+          {/* </Route> */}
 
 
             <Route path='/profile' element={<Profile/>}/>

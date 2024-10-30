@@ -50,9 +50,9 @@ function AdminApp() {
      <Route path='/members' element={<Members/>}/>
     
 
-     <Route element={<PrivateRoute/>}>
+     {/* <Route element={<PrivateRoute/>}> */}
      <Route path='/' element={<Dashboard/>}/>
-     </Route>
+     {/* </Route> */}
      
      {/* <Route path='/' element={<Dashboard/>}/> */}
       <Route path='/bookings' element={<ConferenceHall/>}/>
