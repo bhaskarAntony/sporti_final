@@ -28,6 +28,7 @@ import RoomDetails from './pages/view/RoomDetails';
 import AllRooms from './components/dashboards/AllRooms';
 import EditRoom from './components/dashboards/EditRoom';
 import CreateMember from './pages/membership/CreateMember';
+import NoFound from '../NoFound';
 // import VideoView from './components/videos/VideoView';
 
 
@@ -56,10 +57,15 @@ function AdminApp() {
      
      {/* <Route path='/' element={<Dashboard/>}/> */}
       <Route path='/bookings' element={<ConferenceHall/>}/>
-      <Route path='/new/service' element={<MainFunctionHallBooking/>}/>
-      <Route path='/confirm/service' element={<ConfirmService/>}/>
-      <Route path='/new/room/booking' element={<MainRoomBook/>}/>
-      <Route path='/confirm/room/details' element={<ConfirmRoom/>}/>
+      {/* <Route path='/new/service' element={<MainFunctionHallBooking/>}/> */}
+      <Route path='/new/service' element={<NoFound/>}/>
+      {/* <Route path='/confirm/service' element={<ConfirmService/>}/> */}
+      <Route path='/confirm/service' element={<NoFound/>}/>
+      {/* <Route path='/new/room/booking' element={<MainRoomBook/>}/> */}
+      <Route path='/new/room/booking' element={<NoFound/>}/>
+
+      {/* <Route path='/confirm/room/details' element={<ConfirmRoom/>}/> */}
+      <Route path='/confirm/room/details' element={<NoFound/>}/>
       <Route path='/view/service/details' element={<DetailsView/>}/>
       <Route path='/view/room/details' element={<RoomDetails/>}/>
       <Route path='/select/room' element={<RoomSelection/>}/>
