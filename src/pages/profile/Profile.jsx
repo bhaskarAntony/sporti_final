@@ -7,6 +7,7 @@ import './style.css'
 import { ChevronRight, CheckCircle, Pending, History } from '@mui/icons-material';
 import logo from '../../assets/images/main_logo.jpg' //sporti log
 import { useLocation } from 'react-router-dom';
+import { QRCodeCanvas } from 'qrcode.react';
 
 function Profile() {
     const { user } = useAuth();
@@ -134,28 +135,30 @@ function Profile() {
             </div>
             <div className="col-md-6 mb-3">
             <div className="idCard text-center h-100">
-                    
-                   
-                   <div className='text-center'>
-                   <img src={logo} alt="" style={{width:100}} /> <br />
-                    <p className="fs-6 d-block mt-2 green text-center fw-bold">SPORTI, KARNATAKA</p>
-                    <small className="terms mb-3">TERMS AND CONDITIONS</small><br />
-                   <small className="v-small mt-4">This card is not transferable</small><br />
-                    <div className="bar"></div>
-                    <small className="v-small">Usage of this card subject to terms & conditions of club</small>
-                    <div className="bar"></div>
-                    <small className="v-small">This is card is property of SPORTI. Karnataka</small>
-                    <div className="bar"></div>
-                    <small className="v-small">If found please return to below address.</small>
-                   </div>
-                    <br />
-                    <small className="small d-block">Senior Police Officers Research and Training Institute <br />#1, Primrose Road. Ashok Nagar, Bengaluru-560 025</small>
-                <h6 className="fs-6 text-center green mt-2">ISSUED BY: Secretary SPORTI</h6>
-                    <br />
-                    <div className="qr-code bg-white p-3">
-                    <i class="bi bi-qr-code text-dark" style={{fontSize:'5rem'}}></i>
-                    </div>
-                </div>
+      <div className="text-center">
+        <img src={logo} alt="" style={{ width: 100 }} /> <br />
+        <p className="fs-6 d-block mt-2 green text-center fw-bold">SPORTI, KARNATAKA</p>
+        <small className="terms mb-3">TERMS AND CONDITIONS</small><br />
+        <small className="v-small mt-4">This card is not transferable</small><br />
+        <div className="bar"></div>
+        <small className="v-small">Usage of this card subject to terms & conditions of club</small>
+        <div className="bar"></div>
+        <small className="v-small">This is card is property of SPORTI. Karnataka</small>
+        <div className="bar"></div>
+        <small className="v-small">If found please return to below address.</small>
+      </div>
+      <br />
+      <small className="small d-block">
+        Senior Police Officers Research and Training Institute <br />
+        #1, Primrose Road. Ashok Nagar, Bengaluru-560 025
+      </small>
+      <h6 className="fs-6 text-center green mt-2">ISSUED BY: Secretary SPORTI</h6>
+      <br />
+      <div className="qr-code bg-white p-3">
+        {/* Generate a QR code based on user idCardNo */}
+        <QRCodeCanvas value={user?.idCardNo || 'No ID Available'} size={80} />
+      </div>
+    </div>
             </div>
         </div>
 

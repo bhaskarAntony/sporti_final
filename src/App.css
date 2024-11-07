@@ -48,6 +48,10 @@ background-color: var(--bg-color) !important;
 .app h1{
   color: #F6D776 !important;
 } */
+
+.notfound img{
+  width: 100%;
+}
 .sporti2{
   background: url('../public/images/sporti2/sporti2_banner.jpg') no-repeat center !important;
   background-size: cover !important;

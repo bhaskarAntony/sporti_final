@@ -73,8 +73,7 @@ function AdminApp() {
       <Route path='/all/rooms' element={<AllRooms/>}/>
       <Route path='/edit/rooms/:applicationNo' element={<EditRoom/>}/>
       <Route path='/feedbacks' element={<Feedback/>}/>
-    
-     
+
       </Routes>
    </div>
     </div>

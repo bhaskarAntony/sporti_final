@@ -57,6 +57,7 @@ import PrevBookings from './pages/profile/PrevBookings';
 import BookingHistory from './pages/profile/BookingHistory';
 import ViewRoom from './pages/profile/ViewRoom';
 import { ToastContainer } from 'react-toastify';
+import NoFound from './NoFound';
 
 function App() {
   const location = useLocation();
@@ -205,8 +206,10 @@ function App() {
             {/* <Route element={<ProtectedRoute />}> */}
             <Route path='/services/:sporti' element={<Services />} />
             <Route path='/payment/:applicationNo' element={<Payment />} />
-            <Route path='/room/:sporti' element={<MainRoomBook />} />
-            <Route path='/services/book/:sporti' element={<ServiceBook />} />
+            <Route path='/room/:sporti' element={<NoFound />} />
+            {/* <Route path='/room/:sporti' element={<MainRoomBook />} /> */}
+            {/* <Route path='/services/book/:sporti' element={<ServiceBook />} /> */}
+            <Route path='/services/book/:sporti' element={<NoFound/>} />
             <Route path='/eventView/:id' element={<EventView />} />
             <Route path='/confirm/details' element={<Confirm />} />
             <Route path='/confirm/room/details' element={<ConfirmRoom />} />

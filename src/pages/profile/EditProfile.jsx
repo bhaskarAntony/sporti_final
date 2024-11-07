@@ -13,12 +13,13 @@ import Loading from '../../components/popups/Loading';
 import { toast } from 'react-toastify';
 
 const EditProfile = () => {
-    const {user} = useAuth();
     const navigate = useNavigate()
   // Initial user state (assuming pre-populated data)
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const {user} = useAuth();
+
   
 
   const handleChange = (e) => {
@@ -27,6 +28,7 @@ const EditProfile = () => {
 
 
   const fetchData = async() => {
+    if (!user?.email) return;
     setLoading(true);
     setLoading(true)
     try {
@@ -46,7 +48,7 @@ const EditProfile = () => {
   
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [user]);
 
   if(loading){
     return <Loading/>
@@ -62,7 +64,7 @@ const EditProfile = () => {
     }
   
     try {
-      const response = await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user._id}`, userData);
+      const response = await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user?._id}`, userData);
       console.log(response);
       setLoading(false)
       console.log('Profile updated:', userData);

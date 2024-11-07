@@ -79,11 +79,11 @@ function EditBooking() {
             setRoomLoading(true);
             try {
                 // Fetch rooms based on selected room type and sporti
-                const roomRes = await axios.get(`http://localhost:4000/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`);
+                const roomRes = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`);
                 const roomsData = roomRes.data;
     
                 // Fetch all bookings for the selected sporti and room type
-                const bookingRes = await axios.get('http://localhost:4000/api/sporti/service/bookings');
+                const bookingRes = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
                 const bookings = bookingRes.data;
     
                 // Filter rooms based on their booking status and availability after checkout
