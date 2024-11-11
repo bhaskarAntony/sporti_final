@@ -59,7 +59,7 @@ const contactInfo = {
                     en: 'PHONE',
                     kn: 'ದೂರವಾಣಿ'
                 },
-                desc: '+91 8618363693'
+                desc: '+91 80 2294 2634'
             },
             {
                 icon: 'envelope-fill',
