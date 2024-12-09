@@ -8,8 +8,11 @@ function NoFound() {
        <div className="row">
         <div className="col-md-5 m-auto text-center">
         <img src={logo} alt="logo"  className='w-75'/>
-        <h1 className="fs-1 mt-4">WEB SITE  CURRENTLY</h1>
-        <h1 className="fs-1 fw-bold fw-bold">UNDER MAINTAINANCE</h1>
+        <h1 className="fs-1 mt-4">Website under Maintainance</h1>
+        <p className='fs-5'>Please contact SPORTI helpline</p>
+        <p className='fs-5'>SPORTI1: +91 8277945903</p>
+        <p className='fs-5'>SPORTI2: +91 8022942634</p>
+        <p className='fs-5'>or send Email: digksrp@gmail.com</p>
         <Link to='/' className="blue-btn px-3">GO BACK</Link>
         </div>
        </div>
