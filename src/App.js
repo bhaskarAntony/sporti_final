@@ -203,20 +203,15 @@ function App() {
             <Route path='/terms_and-conditions' element={<Tems_and_conditions />} />
             <Route path='/privacy_policy' element={<Privacy />} />
 
-            {/* <Route element={<ProtectedRoute />}> */}
             <Route path='/services/:sporti' element={<Services />} />
             <Route path='/payment/:applicationNo' element={<Payment />} />
 
-            <Route path='/room/:sporti' element={<NoFound />} />
-            {/* <Route path='/room/:sporti' element={<MainRoomBook />} />  */}
-            {/* <Route path='/services/book/:sporti' element={<ServiceBook />} /> */}
-            <Route path='/services/book/:sporti' element={<NoFound/>} />
+            <Route path='/room/:sporti' element={<MainRoomBook />} /> 
+            <Route path='/services/book/:sporti' element={<ServiceBook />} />
 
             <Route path='/eventView/:id' element={<EventView />} />
-            {/* <Route path='/confirm/details' element={<Confirm />} /> */}
-            <Route path='/confirm/details' element={<NoFound />} />
-            {/* <Route path='/confirm/room/details' element={<ConfirmRoom />} /> */}
-            <Route path='/confirm/room/details' element={<NoFound />} />
+            <Route path='/confirm/details' element={<Confirm />} />
+            <Route path='/confirm/room/details' element={<ConfirmRoom />} />
             <Route path='/view/video/:sporti' element={<VideoView />} />
             <Route path='/payment/success/:applicationNo' element={<RedirectPayment />} />
             <Route path='/edit/profile' element={<EditProfile />} />
