@@ -167,9 +167,13 @@ function App() {
                   }}
               />
           </div>
+        <div className='d-flex gap-2 align-items-center'>
+        <Link to="https://sporti-memebrship-1f1r.vercel.app" className='btn btn-light btn-sm'>Admin</Link>
           {!isAuthenticated ? (
-              <li><Link to="/login" className=' btn btn-light'>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link></li>
-            ):(<button className="btn btn-danger" onClick={logout}>Logout</button> )}
+              <Link to="/login" className=' btn btn-light btn-sm'>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link>
+            ):(<button className="btn btn-danger btn-sm" onClick={logout}>Logout</button> )}
+        </div>
+
       </div>
          )
       }

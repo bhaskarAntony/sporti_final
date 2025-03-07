@@ -19,7 +19,7 @@ function PrevBookings() {
 
       try {
         setLoading(true);
-        const response = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
+        const response = await axios.get('https://sporti-backend-live-3.onrender.com/api/sporti/service/bookings');
         
         if (response?.data) {
           const filteredData = response.data.filter(

@@ -88,7 +88,7 @@ function RoomBookings() {
    
 
 //    const fetchBookings = () =>{
-//     axios.get('https://sporti-backend-live-2.onrender.com/api/sporti/service/bookings')
+//     axios.get('https://sporti-backend-live-3.onrender.com/api/sporti/service/bookings')
 //     .then(response => {
 //         setLoading(false);
 //         setData(response.data);

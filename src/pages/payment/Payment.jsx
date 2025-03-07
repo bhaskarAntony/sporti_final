@@ -49,7 +49,7 @@ const Payment = () => {
 
     useEffect(() => {
         // Fetch booking data
-        axios.get(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/booking/${applicationNo}`)
+        axios.get(`https://sporti-backend-live-3.onrender.com/api/sporti/service/booking/${applicationNo}`)
             .then(response => {
                 setBooking(response.data.booking);
                 setLoading(false);

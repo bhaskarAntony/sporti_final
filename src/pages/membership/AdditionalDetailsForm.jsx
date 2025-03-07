@@ -41,7 +41,7 @@ const AdditionalDetailsForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // try {
-        //     await axios.post(`http://localhost:5000/api/membership/submit-application/${id}`, formData);
+        //     await axios.post(`https://sporti-backend-live-3.onrender.com/api/membership/submit-application/${id}`, formData);
         //     alert('Membership application submitted successfully');
         //     // navigate(`/admin/${id}`)
           

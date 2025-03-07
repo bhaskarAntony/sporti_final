@@ -103,7 +103,7 @@ function Header({ toggleTheme, theme }) {
           </Navbar.Collapse>
            {
             isAuthenticated?(
-              <a href='/profile' className="profile">
+              <a href='https://sporti-membership.vercel.app/' className="profile">
               <h1 className="fs-2 mb-0 fw-bold text-white">{user?.name[0]}</h1>
             </a>
             ):(null)

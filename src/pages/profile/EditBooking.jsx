@@ -79,11 +79,11 @@ function EditBooking() {
             setRoomLoading(true);
             try {
                 // Fetch rooms based on selected room type and sporti
-                const roomRes = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`);
+                const roomRes = await axios.get(`https://sporti-backend-live-3.onrender.com/api/available/rooms?roomType=${formData.roomType}&sporti=${formData.sporti}`);
                 const roomsData = roomRes.data;
     
                 // Fetch all bookings for the selected sporti and room type
-                const bookingRes = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
+                const bookingRes = await axios.get('https://sporti-backend-live-3.onrender.com/api/sporti/service/bookings');
                 const bookings = bookingRes.data;
     
                 // Filter rooms based on their booking status and availability after checkout
@@ -263,7 +263,7 @@ function EditBooking() {
             return;
         }
         setIsLoading(true);
-        axios.post('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/room/book', formData)
+        axios.post('https://sporti-backend-live-3.onrender.com/api/sporti/service/room/book', formData)
             .then(response => {
                 const { success, user } = response.data;
                 if (success) {
@@ -320,7 +320,7 @@ function EditBooking() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/update/booking/${id}`, formData);
+          await axios.put(`https://sporti-backend-live-3.onrender.com/api/sporti/service/update/booking/${id}`, formData);
           alert('updated your booking')
           toast.success('updated your booking')
           navigate('/recent/bookings'); // Redirect to recent bookings after update

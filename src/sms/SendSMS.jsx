@@ -8,7 +8,7 @@ const SendSMS = () => {
 
   const handleSendSMS = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/send-sms', {
+      const res = await axios.post('https://sporti-backend-live-3.onrender.com/send-sms', {
         mobileNumber,
         message,
       });

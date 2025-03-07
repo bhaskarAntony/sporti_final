@@ -32,7 +32,7 @@ const EditProfile = () => {
     setLoading(true);
     setLoading(true)
     try {
-      const response = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user._id}`);
+      const response = await axios.get(`https://sporti-backend-live-3.onrender.com/api/auth/user/${user._id}`);
       console.log(response.data);
       setUserData(response.data);
       setLoading(false)
@@ -64,7 +64,7 @@ const EditProfile = () => {
     }
   
     try {
-      const response = await axios.put(`https://sporti-backend-live-p00l.onrender.com/api/auth/user/${user?._id}`, userData);
+      const response = await axios.put(`https://sporti-backend-live-3.onrender.com/api/auth/user/${user?._id}`, userData);
       console.log(response);
       setLoading(false)
       console.log('Profile updated:', userData);

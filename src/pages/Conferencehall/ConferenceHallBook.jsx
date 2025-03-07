@@ -21,7 +21,7 @@ const ConferenceHallBook = () => {
         e.preventDefault();
         console.log(formData)
         try {
-            const res = await axios.post('http://localhost:5000/api/confrenceHall', formData);
+            const res = await axios.post('https://sporti-backend-live-3.onrender.com/api/confrenceHall', formData);
             console.log(res.data);
             // Handle success, maybe show a confirmation message
         } catch (error) {
