@@ -136,13 +136,13 @@ function ConfirmRoom() {
                     setIsLoading(false);
                    
                   try {
-                    openDialog('Success', `${selectedLanguage === 'kannada' ? 'ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿಯನ್ನು ನಿರ್ವಹಕನಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ, ಇದು ಒಬ್ಬ ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೋಂದಣಿ ಸಂಖ್ಯೆಯನ್ನು ಭಾವಿಸಲು ಗಮನ ನೀಡಿ.' : `Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS.`}`);// Please note your Booking ID No ${response.data.user.applicationNo} for reference
+                    // openDialog('Success', `${selectedLanguage === 'kannada' ? 'ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿನಂತಿಯನ್ನು ನಿರ್ವಹಕನಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ, ಇದು ಒಬ್ಬ ಕೆಲಸದ ದಿನಕ್ಕಾಗಿ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ. ನೋಂದಣಿ ಸಂಖ್ಯೆಯನ್ನು ಭಾವಿಸಲು ಗಮನ ನೀಡಿ.' : `Your booking request has been sent to the administrator. You will receive an email and SMS. It takes one working day for confirmation SMS.`}`);// Please note your Booking ID No ${response.data.user.applicationNo} for reference
                     console.log(response);
-                    navigate('/');
+                    window.location.href = 'https://sporti-gov-co-in.vercel.app/booking-confirmation/10829cfd3';
+
                   } catch (error) {
                     toast.error(error)
                         console.log(error);
-                        
                   }
                 } else {
                     setIsLoading(false);

@@ -1,55 +1,55 @@
-.about-banner{
-    background: url('../../../public/images/aboutus/about_us_banner.jpg') no-repeat center top !important;
-    background-size:cover !important;
-    color: #fff;
-    min-height: 80vh !important;
-    background-attachment: fixed !important;
-}
-.about-image{
-    max-height: 70vh;
-    object-fit: cover;
-    object-position: center top;
-}
-.profile-card img{
-    min-height: 400px;
-    height: 400px !important;
-    max-height: 400px !important;
-    object-fit: cover;
-    object-position: center top;
-    background-color: #ccc;
-}
-@media (max-width:768px){
-    .profile-card img{
-        min-height: fit-content;
-        height: fit-content;
-        max-height: fit-content;
+    .about-banner{
+        background: url('../../../public/images/aboutus/about_us_banner.jpg') no-repeat center top !important;
+        background-size:cover !important;
+        color: #fff;
+        min-height: 80vh !important;
+        background-attachment: fixed !important;
     }
-}
-.profile-card{
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-    margin-bottom: 20px;
-}
-.wall-frames{
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    overflow: auto;
-}
-.frame-card{
-    min-width: 300px;
-}
-.frame-card img{
-    height: 200px;
-    object-fit: cover;
-}
-.frame-card img:hover{
-    transform: scale(1.1);
-    transition: 0.8s;
-    cursor: pointer;
-}
+    .about-image{
+        max-height: 70vh;
+        object-fit: cover;
+        object-position: center top;
+    }
+    .profile-card img{
+        min-height: 400px;
+        height: 400px !important;
+        max-height: 400px !important;
+        object-fit: cover;
+        object-position: center top;
+        background-color: #ccc;
+    }
+    @media (max-width:768px){
+        .profile-card img{
+            min-height: fit-content;
+            height: fit-content;
+            max-height: fit-content;
+        }
+    }
+    .profile-card{
+        /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+        margin-bottom: 20px;
+    }
+    .wall-frames{
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow: auto;
+    }
+    .frame-card{
+        min-width: 300px;
+    }
+    .frame-card img{
+        height: 200px;
+        object-fit: cover;
+    }
+    .frame-card img:hover{
+        transform: scale(1.1);
+        transition: 0.8s;
+        cursor: pointer;
+    }
 
-@media (max-width:768px){
-    .profile-card img{
-        height: fit-content !important;
+    @media (max-width:768px){
+        .profile-card img{
+            height: fit-content !important;
+        }
     }
-}
