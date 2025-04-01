@@ -169,7 +169,7 @@ function App() {
           </div>
         <div className='d-flex gap-2 align-items-center'>
        
-        {/* <Link to="https://sporti-gov-co-in.vercel.app/admin/login" className='btn btn-light btn-sm'>Admin Dashboard Lite</Link> */}
+       {/* <Link to="https://sporti-gov-co-in.vercel.app/admin/login" className='btn btn-light btn-sm'>Admin Dashboard Lite</Link> */}
           {!isAuthenticated ? (
             <>
             
