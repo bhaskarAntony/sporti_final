@@ -172,10 +172,14 @@ function App() {
         {/* <Link to="https://sporti-gov-co-in.vercel.app/admin/login" className='btn btn-light btn-sm'>Admin Dashboard Lite</Link> */}
           {!isAuthenticated ? (
             <>
-             <Link to="https://sporti-gov-co-in.vercel.app/admin/login" className='btn btn-light btn-sm'>Admin Dashboard</Link>
+            
              <Link to="/login" className=' btn btn-light btn-sm'>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link>
             </>
-            ):(<button className="btn btn-danger btn-sm" onClick={logout}>Logout</button> )}
+            ):(
+            <>
+              <Link to="https://sporti-gov-co-in.vercel.app/admin/login" className='btn btn-light btn-sm'>Admin Dashboard</Link>
+              <button className="btn btn-danger btn-sm" onClick={logout}>Logout</button>
+            </> )}
         </div>
 
       </div>
