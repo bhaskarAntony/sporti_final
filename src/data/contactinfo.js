@@ -59,7 +59,7 @@ const contactInfo = {
                     en: 'PHONE',
                     kn: 'ದೂರವಾಣಿ'
                 },
-                desc: '+91 80 2294 2634'
+                desc: '+91 9480800826'
             },
             {
                 icon: 'envelope-fill',
