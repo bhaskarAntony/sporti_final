@@ -12,7 +12,7 @@ function AllRooms({ roomType, sporti }) {
     const fetchRoomData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://sporti-backend-live-3.onrender.com/api/all/rooms');
+        const response = await axios.get('http://localhost:4000/api/all/rooms');
         const rooms = response.data.data;
 
         const structuredData = rooms.reduce((acc, room) => {
@@ -41,7 +41,7 @@ function AllRooms({ roomType, sporti }) {
 
   const clearRoom = async (id) => {
     try {
-      const res = await axios.post(`https://sporti-backend-live-3.onrender.com/api/clear/room/${id}`);
+      const res = await axios.post(`http://localhost:4000/api/clear/room/${id}`);
       toast.success('Room cleared successfully');
       console.log(id);
       

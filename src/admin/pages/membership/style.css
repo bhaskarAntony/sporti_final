@@ -1,0 +1,34 @@
+.bg-light {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+  }
+  
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .bg-primary {
+    background: linear-gradient(to right, #007bff, #00c4ff) !important;
+  }
+  
+  .list-group-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #333;
+  }

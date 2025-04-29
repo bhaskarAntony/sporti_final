@@ -29,6 +29,7 @@ import AllRooms from './components/dashboards/AllRooms';
 import EditRoom from './components/dashboards/EditRoom';
 import CreateMember from './pages/membership/CreateMember';
 import NoFound from '../NoFound';
+import MemberDetails from './components/dashboards/MemberDetails';
 // import VideoView from './components/videos/VideoView';
 
 
@@ -79,6 +80,7 @@ function AdminApp() {
       <Route path='/all/rooms' element={<AllRooms/>}/>
       <Route path='/edit/rooms/:applicationNo' element={<EditRoom/>}/>
       <Route path='/feedbacks' element={<Feedback/>}/>
+      <Route path="/member-details" element={<MemberDetails />} />
 
       </Routes>
    </div>

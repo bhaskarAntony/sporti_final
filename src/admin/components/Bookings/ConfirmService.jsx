@@ -97,7 +97,7 @@ function ConfirmService() {
         e.preventDefault();
 
         setIsLoading(true);
-        axios.post('https://sporti-backend-live-3.onrender.com/api/sporti/service/service/book', formData)
+        axios.post('http://localhost:4000/api/sporti/service/service/book', formData)
             .then(response => {
                 const { success, user } = response.data;
                 if (success) {
