@@ -15,7 +15,7 @@ const BookingProvider = ({ children }) => {
   // Fetch booking data from API
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/api/sporti/service/bookings');
+      const response = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings');
       setBookings((response.data).reverse());
       setIsLoading(false);
     } catch (err) {

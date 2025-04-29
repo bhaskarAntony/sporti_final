@@ -55,7 +55,7 @@ function EditBooking() {
         // Fetch the booking by ID
         const fetchBooking = async () => {
           try {
-            const response = await axios.get(`http://localhost:4000/api/sporti/service/booking/${id}`);
+            const response = await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/booking/${id}`);
             setFormData(response.data.booking);
             console.log(response.data.booking);
             

@@ -14,7 +14,7 @@ const MemberList = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/auth/members/list');
+        const response = await axios.get('https://sporti-backend-live-p00l.onrender.com/api/auth/members/list');
         setData(response.data);
         setFilteredData(response.data); // Initially, filteredData is the same as data
       } catch (error) {
@@ -47,7 +47,7 @@ const MemberList = () => {
     try {
       await Promise.all(
         selectedMembers.map((id) =>
-          axios.delete(`http://localhost:4000/api/auth/members/${id}`)
+          axios.delete(`https://sporti-backend-live-p00l.onrender.com/api/auth/members/${id}`)
         )
       );
       setData(data.filter((item) => !selectedMembers.includes(item._id)));
@@ -63,7 +63,7 @@ const MemberList = () => {
   // Delete a single member
   const deleteHandler = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/auth/members/${id}`);
+      await axios.delete(`https://sporti-backend-live-p00l.onrender.com/api/auth/members/${id}`);
       setData(data.filter((item) => item._id !== id));
       setFilteredData(filteredData.filter((item) => item._id !== id));
       setSelectedMembers(selectedMembers.filter((item) => item !== id));

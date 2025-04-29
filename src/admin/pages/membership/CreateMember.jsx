@@ -60,7 +60,7 @@ function CreateMember() {
 
     try {
       const response = await axios.post(//https://sporti-backend-live-p00l.onrender.com
-        'http://localhost:4000/api/auth/register',
+        'https://sporti-backend-live-p00l.onrender.com/api/auth/register',
         {
           name: `${userData.firstName} ${userData.middleName} ${userData.lastName}`.trim(),
           email: userData.email,

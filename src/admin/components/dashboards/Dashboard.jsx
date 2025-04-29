@@ -119,8 +119,8 @@ const filterDataByMonth1 = (data, selectedMonth) => {
 
       setLoading(true);
       try {
-        const response = await axios.get(//http://localhost:4000
-          `http://localhost:4000/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
+        const response = await axios.get(//https://sporti-backend-live-p00l.onrender.com
+          `https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
         );
         const rooms = response.data;
 
@@ -156,7 +156,7 @@ const filterDataByMonth1 = (data, selectedMonth) => {
    
 
 //    const fetchBookings = () =>{
-//     axios.get('http://localhost:4000/api/sporti/service/bookings')
+//     axios.get('https://sporti-backend-live-p00l.onrender.com/api/sporti/service/bookings')
 //     .then(response => {
 //         setLoading(false);
 //         setData(response.data);
@@ -355,7 +355,7 @@ const deleteMultipleBookings = () => {
         setLoading(true);
         Promise.all(
             selectedBookings.map((applicationNo) =>
-                axios.delete(`http://localhost:4000/api/sporti/service/delete/booking/${applicationNo}`)
+                axios.delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${applicationNo}`)
             )
         )
             .then(() => {
@@ -377,8 +377,8 @@ const deleteMultipleBookings = () => {
 const deleteHandler = (id) => {
     if (window.confirm('Delete Booking?')) {
         setLoading(true);
-        axios//http://localhost:4000
-            .delete(`http://localhost:4000/api/sporti/service/delete/booking/${id}`)
+        axios//https://sporti-backend-live-p00l.onrender.com
+            .delete(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/delete/booking/${id}`)
             .then((res) => {
                 setLoading(false);
                 toast.success('Booking deleted');
@@ -405,8 +405,8 @@ const deleteHandler = (id) => {
             navigate(`/admin/select/room`, { state: {data:formData } })
        }else{
         setLoading(true);
-        try {//http://localhost:4000
-            await axios.patch(`http://localhost:4000/api/sporti/service/${formData._id}/confirm`);
+        try {//https://sporti-backend-live-p00l.onrender.com
+            await axios.patch(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/${formData._id}/confirm`);
             // fetchBookings(); // Refresh bookings after confirmation
             setLoading(false);
             toast.success('Accepted the request');
@@ -424,8 +424,8 @@ const deleteHandler = (id) => {
         if(formData.serviceName == "Room Booking"){
            if(window.confirm('DO you want to make payment is success')){
             setLoading(true);
-            try {//http://localhost:4000
-                await axios.patch(`http://localhost:4000/api/sporti/service/${formData._id}/success/payment`);
+            try {//https://sporti-backend-live-p00l.onrender.com
+                await axios.patch(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/${formData._id}/success/payment`);
                 // fetchBookings(); // Refresh bookings after confirmation
                 setLoading(false);
                 toast.success('Payemnt is success');
@@ -451,7 +451,7 @@ const deleteHandler = (id) => {
           if (userConfirmed) {
             setLoading(true);
             try {
-              await axios.patch(`http://localhost:4000/api/sporti/service/${formData._id}/remove/payment`);
+              await axios.patch(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/${formData._id}/remove/payment`);
               toast.success('Payment has been removed successfully');
               fetchBookings(); // Refresh bookings after confirmation
             } catch (error) {
@@ -470,7 +470,7 @@ const deleteHandler = (id) => {
     const handleRejectBooking = async () => {
         setLoading(true);
         try {
-            await axios.patch(`http://localhost:4000/api/sporti/service/${selectedBooking._id}/reject`, { rejectionReason });
+            await axios.patch(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/${selectedBooking._id}/reject`, { rejectionReason });
             fetchBookings(); // Refresh bookings after rejection
              setShowModal(false)
             setLoading(false);
@@ -488,7 +488,7 @@ const deleteHandler = (id) => {
     };
 
    const resendSMS = async(id)=>{
-   await axios.get(`http://localhost:4000/api/sporti/service/send/room/sms/${id}`)
+   await axios.get(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/send/room/sms/${id}`)
    .then((res)=>{
     console.log(res);
     toast.success('Done')

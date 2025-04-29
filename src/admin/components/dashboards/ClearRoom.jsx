@@ -31,7 +31,7 @@ const ClearRoom = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
+          `https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
         );
         const rooms = response.data;
 
@@ -80,7 +80,7 @@ const ClearRoom = () => {
 
     setLoading(true);
     try {
-      await axios.patch(`http://localhost:4000/api/sporti/service/${formData._id}/select-room/${selectedRoom.id}`, {
+      await axios.patch(`https://sporti-backend-live-p00l.onrender.com/api/sporti/service/${formData._id}/select-room/${selectedRoom.id}`, {
         roomNumber: selectedRoom.roomNumber,
       });
       setLoading(false);
@@ -97,12 +97,12 @@ const ClearRoom = () => {
   if(window.confirm('DO You want to Block the room')){
     setLoading(true);
     try {
-      await axios.post(`http://localhost:4000/api//clear/room/${id}`);
+      await axios.post(`https://sporti-backend-live-p00l.onrender.com/api//clear/room/${id}`);
       toast.success('Cleared successfully');
 
       // Fetch updated room data after blocking a room
       const response = await axios.get(
-        `http://localhost:4000/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
+        `https://sporti-backend-live-p00l.onrender.com/api/available/rooms?roomType=${selectedRoomType}&sporti=${selectedSporti}`
       );
       const rooms = response.data;
 
