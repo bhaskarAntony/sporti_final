@@ -12,12 +12,13 @@ function About() {
 
   return (
     <div className='about'>
+    
       <Helmet>
       <title>About SPORTI - Senior Police Officers Research and Training Institute</title>
     <meta name="description" content="Learn about SPORTI, established in 1973, dedicated to serving the Karnataka Police with quality training, accommodation, and event facilities." />
     <meta name="keywords" content="About SPORTI, Senior Police Officers Research and Training Institute, police training, history of SPORTI, services for police officers, Karnataka Police, committee members" />
-
       </Helmet>
+
       <div className="contact-banner ">
         <img src={aboutImage} alt="" className="w-100 about-image" />
       </div>
