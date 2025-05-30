@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext.jsx';
+import AuthContext from './AuthContext.jsx';
 import Spinner from 'react-bootstrap/Spinner';
 
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useContext(AuthContext);
+const AdminRoute = ({ children }) => {
+  const { user, isAuthenticated, loading } = useContext(AuthContext);
   
   if (loading) {
     return (
@@ -14,11 +14,11 @@ const ProtectedRoute = ({ children }) => {
     );
   }
   
-  if (!isAuthenticated) {
+  if (!isAuthenticated || user.role !== 'admin') {
     return <Navigate to="/login" replace />;
   }
   
   return children;
 };
 
-export default ProtectedRoute;
+export default AdminRoute;

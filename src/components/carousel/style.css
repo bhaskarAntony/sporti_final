@@ -43,3 +43,8 @@
         color: #ffffff !important;
     }
 }
+.modal-content{
+    background: linear-gradient(45deg, #dad7e17a, #d9d9da90) !important;
+    backdrop-filter: blur(2px);
+    border-radius: 10px !important;
+}

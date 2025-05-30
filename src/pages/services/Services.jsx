@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import servicesData from '../../data/services';
 import './style.css';
 import { Link, useParams } from 'react-router-dom';
@@ -10,8 +10,12 @@ import sporti2Menu from '../../components/documents/sporti2_menu.pdf'
 import sporti1banner from '../../assets/images/banners/sporti1_banner.jpg'
 import sporti2banner from '../../assets/images/banners/sporti2_banner.jpg'
 import { Helmet } from 'react-helmet';
+import AuthContext from '../../context/AuthContext.jsx';
+import GuestAuthContext from '../../context/GuestAuthContext.jsx';
 
 function Services() {
+  const {isAuthenticated} = useContext(AuthContext);
+  const {isGuestAuthenticated} = useContext(GuestAuthContext);
   const { sporti } = useParams(); // Destructure sporti from useParams()
   console.log(sporti);
   
@@ -103,7 +107,7 @@ function Services() {
                     //   <Link to={`/services/book/${item.title.trim('-')}`} className='blue-btn rounded-5'>
                     //   Book Now
                     // </Link>
-                     <Link to={item.link} className='blue-btn rounded-5'>
+                     <Link to={isAuthenticated?item.link:isGuestAuthenticated?'/guest/book-room':'/login'} className='blue-btn rounded-5'>
                      {isKannada?'ಬುಕ್ ಮಾಡಿ':'Book Now'}
                    </Link>
                     ):(null)

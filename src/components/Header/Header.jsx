@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation} from 'react-router-dom';  // Import Link
-import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LangaugeContext';
-import { Navbar, Container, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown, Offcanvas, Button, Modal } from 'react-bootstrap';
 import logo from '../../assets/images/main_logo.jpg';
 import './style.css';
+import AuthContext from '../../context/AuthContext.jsx';
+import { Calendar, HomeIcon, LogOut, Settings, User, UserCircle } from 'lucide-react';
+import GuestAuthContext from '../../context/GuestAuthContext.jsx';
+
 
 function Header({ toggleTheme, theme }) {
   const [selectedLink, setSelectedLink] = useState('/')
   const location = useLocation()
+  const [loginshow, setLoginShow] = useState(false);
   const [show, setShow] = useState(false);
   const [showDropdown2, setShowDropdown2] = useState(false);
-  const { isAuthenticated, logout, user } = useAuth();
+  const { isAuthenticated, handleLogout, user, logout} = useContext(AuthContext);
+  const {isGuestAuthenticated, logoutGuest} = useContext(GuestAuthContext)
   const { isKannada } = useLanguage();
   console.log('user = ', user);
   
@@ -53,9 +58,15 @@ function Header({ toggleTheme, theme }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const showModal = () => {
+    setLoginShow(true);
+  }
+  const closeModal = () => {
+    setLoginShow(false);
+  }
   return (
     <header>
-      <Navbar expand="xl" className="navbar p-0">
+      <Navbar expand="xl" className="navbar p-1" >
         <Container fluid className="p-0 d-flex justify-content-between">
           <div className="logo-container d-flex align-items-center">
             <Navbar.Brand as={Link} to="/">
@@ -75,7 +86,7 @@ function Header({ toggleTheme, theme }) {
 
           <Navbar.Collapse id="navbarScroll" className="p-0">
             <div className="d-none d-lg-block w-100">
-              <Nav className="me-auto my-2 my-lg-0 gap-1 " style={{ maxHeight: '70px' }} navbarScroll>
+              <Nav className="me-auto my-2 my-lg-0 gap-2 p-2" style={{ maxHeight: '70px' }} navbarScroll>
                 <Nav.Link as={Link} className={selectedLink == "/"?"active":null} to="/">{isKannada ? 'ಮನೆ' : 'Home'}</Nav.Link>
                 {/* {isAuthenticated && (
                   <> */}
@@ -97,17 +108,92 @@ function Header({ toggleTheme, theme }) {
                     </NavDropdown>
                   {/* </>
                 )} */}
-               
+              
               </Nav>
             </div>
           </Navbar.Collapse>
-           {
+            <div className='d-flex align-items-center pannel'>
+                 
+                {isAuthenticated ? (
+                             <>
+                               {user.role === 'admin' && (
+                                 <Nav.Link as={Link} to="/admin" className="px-3">Admin</Nav.Link>
+                               )}
+                               
+                               <NavDropdown  
+                               className='btn btn-lght'
+                                 title={
+                                   <div className="d-inline-flex align-items-center">
+                                     <UserCircle size={32} className="me-1 mt-1 bg-white text-dark rounded-circle" />
+                                     {/* <span>{user.name}</span> */}
+                                   </div>
+                                 } 
+                                 id="user-dropdown"
+                                 align="end"
+                               >
+                                 <NavDropdown.Item as={Link} to="/dashboard">
+                                   <HomeIcon size={16} className="me-2" />
+                                   Dashboard
+                                 </NavDropdown.Item>
+                                 <NavDropdown.Item as={Link} to="/profile">
+                                   <Settings size={16} className="me-2" />
+                                   Profile
+                                 </NavDropdown.Item>
+                                 <NavDropdown.Item as={Link} to="/my-bookings">
+                                   <Calendar size={16} className="me-2" />
+                                   My Bookings
+                                 </NavDropdown.Item>
+                                 {user.role === 'member' && (
+                                   <NavDropdown.Item as={Link} to="/my-guests">
+                                     <User size={16} className="me-2" />
+                                     My Guests
+                                   </NavDropdown.Item>
+                                 )}
+                                 <NavDropdown.Divider />
+                                 <NavDropdown.Item onClick={logout}>
+                                   <LogOut size={16} className="me-2" />
+                                   Logout
+                                 </NavDropdown.Item>
+                               </NavDropdown>
+                             </>
+                           ):isGuestAuthenticated?(
+                               <NavDropdown  
+                               className='btn btn-lght'
+                                 title={
+                                   <div className="d-inline-flex align-items-center">
+                                     <UserCircle size={32} className="me-1 mt-1 bg-white text-dark rounded-circle" />
+                                     {/* <span>{user.name}</span> */}
+                                   </div>
+                                 } 
+                                 id="user-dropdown"
+                                 align="end"
+                               >
+                                 <NavDropdown.Item as={Link} to="/dashboard">
+                                   <HomeIcon size={16} className="me-2" />
+                                   Booking Status
+                                 </NavDropdown.Item>
+                                
+                                 <NavDropdown.Divider />
+                                 <NavDropdown.Item onClick={logoutGuest}>
+                                   <LogOut size={16} className="me-2" />
+                                   Logout
+                                 </NavDropdown.Item>
+                               </NavDropdown>
+                           ) : (
+                             <div className='d-flex gap-2'>
+                            <Button variant="light" className='btn-sm' onClick={showModal}>Login</Button>
+
+                              
+                             </div>
+                           )}
+                  </div>
+           {/* {
             isAuthenticated?(
               <a href='https://sporti-membership.vercel.app/' className="profile">
               <h1 className="fs-2 mb-0 fw-bold text-white">{user?.name[0]}</h1>
             </a>
             ):(null)
-           }
+           } */}
         </Container>
       </Navbar>
 
@@ -142,12 +228,25 @@ function Header({ toggleTheme, theme }) {
               {/* </> */}
             {/* )} */}
 
-            {!isAuthenticated ? (
+            {/* {!isAuthenticated ? (
               <li><Link to="/login" className='btn btn-light' onClick={handleClose}>{isKannada ? 'ಲಾಗಿನ್' : 'Login'}</Link></li>
-            ):(<button className="btn btn-danger w-100" onClick={logout}>Logout</button> )}
+            ):(<button className="btn btn-danger w-100" onClick={logout}>Logout</button> )} */}
           </ul>
         </Offcanvas.Body>
       </Offcanvas>
+
+       <Modal show={loginshow} onHide={closeModal} centered className='modal-dialog-centered p-1' size="sm">
+            <Modal.Header className="text-center justify-content-center">
+              {/* <Modal.Title>{isKannada?'ಸ್ಪೋರ್ಟಿ - ಹಿರಿಯ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳ ತರಬೇತಿ ಮತ್ತು ಸಂಶೋಧನಾ ಸಂಸ್ಥೆ':'SPORTI - Senior Police Officers Research and Training Institute'}</Modal.Title>   */}
+              <Modal.Title className="text-dark text-center fs-6">LOGIN</Modal.Title>
+            </Modal.Header>
+            <hr />
+            <Modal.Body className='d-flex flex-wrap gap-2 p-2'>
+              <a href='/login' className="blue-btn">Member</a>
+              <a href='/guest/book-room' className="blue-btn">non Member</a>
+            </Modal.Body>
+      
+          </Modal>
     </header>
   );
 }

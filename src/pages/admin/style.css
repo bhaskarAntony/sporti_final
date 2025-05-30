@@ -1,0 +1,64 @@
+.manage-members-container {
+    background-color: #f8f9fa;
+  }
+  
+  h1.display-6 {
+    color: #1a3c6d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .breadcrumb {
+    background: transparent;
+    padding: 0;
+  }
+  
+  .card {
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .table thead {
+    background-color: #6e7276;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f3f5;
+  }
+  
+  .blue-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .blue-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.8em;
+  }
+  
+  .pagination .page-link {
+    color: #007bff;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+  }
+  .manage-rooms-container {
+    background-color: #f8f9fa;
+  }
+  .reports-container {
+    background-color: #f8f9fa;
+  }

@@ -2,12 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Card, Alert, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
-import OtpInput from 'react-otp-input'; // Import the OTP input library
-import AuthContext from '../context/AuthContext.jsx';
-import AlertContext from '../context/AlertContext.jsx';
+import OtpInput from 'react-otp-input';
+import GuestAuthContext from '../context/GuestAuthContext.jsx';
 import logo from '../assets/images/main_logo.jpg';
 
-const Login = () => {
+const GuestLogin = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [step, setStep] = useState('phone'); // 'phone' or 'otp'
@@ -15,15 +14,14 @@ const Login = () => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  const { initiateLogin, verifyOTP, isAuthenticated } = useContext(AuthContext);
-  const { setSuccess } = useContext(AlertContext);
+  const { initiateGuestLogin, verifyGuestOTP, isGuestAuthenticated } = useContext(GuestAuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard');
+    if (isGuestAuthenticated) {
+      navigate('/guest/bookings');
     }
-  }, [isAuthenticated, navigate]);
+  }, [isGuestAuthenticated, navigate]);
 
   const handlePhoneSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +36,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const result = await initiateLogin(phoneNumber);
+      const result = await initiateGuestLogin(phoneNumber);
 
       if (result.success) {
         setSuccessMessage('OTP sent to your phone number');
@@ -48,7 +46,7 @@ const Login = () => {
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
-      console.error('Initiate login error:', err);
+      console.error('Initiate guest login error:', err);
     } finally {
       setLoading(false);
     }
@@ -67,11 +65,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const result = await verifyOTP(phoneNumber, otp);
+      const result = await verifyGuestOTP(phoneNumber, otp);
 
       if (result.success) {
-        setSuccess('Login successful!');
-        navigate('/dashboard');
+        setSuccessMessage('Guest login successful!');
+        navigate('/guest/bookings');
       } else {
         setError(result.message);
       }
@@ -94,7 +92,7 @@ const Login = () => {
                 <h1 className="fs-5 mt-2 fw-bold">Senior Police officer's Research and Training Institute</h1>
               </div>
               <hr /> */}
-              <h1 className="fs-5 fw-bold text-center">MEMBER LOGIN</h1>
+              <h1 className="fs-5 fw-bold text-center">GUEST LOGIN</h1>
               <hr />
 
               {error && <Alert variant="danger">{error}</Alert>}
@@ -113,9 +111,9 @@ const Login = () => {
                     />
                   </Form.Group>
                   <p className="mb-1">
-                    Are you a non-member?{' '}
-                    <Link to="/guest-login" className="text-decoration-none">
-                      non-member Login
+                    Are you a member?{' '}
+                    <Link to="/login" className="text-decoration-none">
+                      Member Login
                     </Link>
                   </p>
                   <Button
@@ -165,9 +163,9 @@ const Login = () => {
                     />
                   </Form.Group>
                   <p className="mb-1">
-                    Are you a non-member?{' '}
-                    <Link to="/guest/room-book" className="text-decoration-none">
-                      non-member Login
+                    Are you a member?{' '}
+                    <Link to="/login" className="text-decoration-none">
+                      Member Login
                     </Link>
                   </p>
                   <Button
@@ -212,4 +210,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default GuestLogin;

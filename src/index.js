@@ -14,6 +14,9 @@ import { BrowserRouter } from 'react-router-dom';  // Import BrowserRouter
 import { LanguageProvider } from './context/LangaugeContext';  // Import LanguageProvider
 import { AuthProviderAdmin } from './admin/components/privateRoutes/AuthContext';
 import { BookingProvider } from './admin/components/hooks/BookingContext';
+import { AlertProvider } from './context/AlertContext.jsx';
+import { AllAuthProvider } from './context/AuthContext.jsx';
+import { GuestAuthProvider } from './context/GuestAuthContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,18 +25,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
       <BrowserRouter>
-    <AuthProvider>
-
-      <AuthProviderAdmin>
-      <BookingProvider>
-      <DialogProvider>
-          <LanguageProvider>
-            <App />
-          </LanguageProvider>
-        </DialogProvider>
-      </BookingProvider>
-      </AuthProviderAdmin>
-    </AuthProvider>
+    <AlertProvider>
+      <AllAuthProvider>
+      <AuthProvider>
+  <GuestAuthProvider>
+    
+<AuthProviderAdmin>
+<BookingProvider>
+<DialogProvider>
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
+  </DialogProvider>
+</BookingProvider>
+</AuthProviderAdmin>
+  </GuestAuthProvider>
+</AuthProvider>
+      </AllAuthProvider>
+    </AlertProvider>
 
       </BrowserRouter>
 );

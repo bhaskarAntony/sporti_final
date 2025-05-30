@@ -15,7 +15,7 @@
         font-weight: 500 !important;
         position: relative;
         overflow: hidden;
-        margin-left: 30px;
+        /* margin-left: 30px; */
     }
     header .active{
         position: relative;
@@ -64,8 +64,8 @@
         margin-right: 5px;
     }
     .logo img{
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
         border-radius:100px;
         object-fit: cover;
         /* transform: skew(45deg); */
@@ -73,7 +73,11 @@
     }
     .logo-container{
         min-width: 200px;
-        background-color: #fff;
+        background-color: #ffffff;
+        /* transform: skew(-45deg); */
+        border-radius: 0px 100px 100px 0px;
+        
+
     }
     .navbar .dropdown:hover .dropdown-menu {
         display: block;
@@ -126,3 +130,32 @@
     }
     .mobile-nav ul li a:hover{
     }
+   
+      
+    
+      
+    
+      
+  
+      
+     
+      
+      @media (max-width: 1399px) {
+        .navbar .nav-link {
+          font-size: 0.9rem !important;
+          padding: 0.5rem 0.75rem !important;
+        }
+      }
+      
+      @media (max-width: 1199px) {
+        .navbar .nav-link {
+          font-size: 0.85rem !important;
+          padding: 0.5rem 0.6rem !important;
+        }
+      }
+      
+      @media (min-width: 1400px) {
+        .container-fluid {
+          max-width: 1400px;
+        }
+      }

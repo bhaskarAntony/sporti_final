@@ -5,7 +5,23 @@
   --text-color: #000000;
   --header-bg-color: #f1f1f1;
   --dark-color:#191717;
-  --gradient:linear-gradient(45deg, #282972, #522872)
+  --gradient:linear-gradient(45deg, #282972, #522872);
+  --primary: #0056b3;
+  --secondary: #28a745;
+  --accent: #fd7e14;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --success: #20c997;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --gray: #6c757d;
+  --body-bg: #f5f7f9;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+.btn-success1{
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
 }
 
 [data-theme='dark'] {
@@ -15,16 +31,24 @@
   --header-bg-color: #333333;
   --gradient:linear-gradient(45deg, #282972, #522872)
 }
+.text-main{
+  color: #282972 !important;
+}
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo:wght@600&family=DM+Sans:opsz@9..40&family=Fira+Sans:wght@900&family=Libre+Barcode+39+Extended+Text&family=Libre+Franklin&family=Noto+Sans:wght@300&family=Poppins:wght@400;500;800&family=Press+Start+2P&family=Rubik:wght@500&family=Tilt+Prism&family=Wallpoet&family=Work+Sans:wght@300&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Chivo&display=swap');
 
+.form-control:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25) !important;
+}
 *{
   font-family: "DM Sans",sans-serif !important;
 }
- *{
-  text-transform:capitalize !important;
-}
+ /* *{
+  text-transform:capitalize;
+} */
+
 
 
 
@@ -151,7 +175,7 @@ text-align: center;
   position: relative;
   color: gray;
   margin-bottom: 30px;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 .title{
   text-transform: uppercase;
@@ -194,9 +218,7 @@ text-align: center;
   padding: 10px !important;
   border-radius: 2px !important;
 }
-.form-control:focus, .form-select:focus{
-  box-shadow: none !important;
-}
+
 
 .carousel-indicators [data-bs-target]{
   width: 30px !important;
@@ -318,4 +340,16 @@ text-align: center;
 }
 .about .ourteam, .about table{
   text-align:left !important;
+}
+.dropdown-menu{
+  z-index: 1120 !important;
+}
+.form-label{
+  font-weight: normal !important;
+}
+.fs-6{
+  text-align: unset !important;
+}
+.pannel .dropdown-toggle::after{
+  display: none !important;
 }

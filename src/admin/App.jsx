@@ -38,7 +38,7 @@ function AdminApp() {
   const { isAuthenticated, logout} = useAuth();
   return (
     <div className='container-fluid app admin'>
-      <Security/>
+      {/* <Security/> */}
     <ToastContainer/>
     
    <div className='row'>

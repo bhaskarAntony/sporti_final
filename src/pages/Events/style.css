@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
 }
-.card{
+.event-card{
     width: 400px;
     padding: 20px;
 }

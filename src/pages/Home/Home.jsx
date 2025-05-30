@@ -93,8 +93,8 @@ const fontSizeClasses = [
         <Hero />
         <marquee behavior="scroll" direction="left" scrollamount="10" className='d-block p-1 text-white bg-danger'>
           {
-            isKannada?(<span><b>ಹಕ್ಕು ನಿರಾಕರಣೆ:</b> ಕರ್ನಾಟಕದ ಹಿರಿಯ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗೆ ಮಾತ್ರ ಸ್ಪೋರ್ಟಿ ಈವೆಂಟ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು</span>):(
-              <span><b>Disclaimer:</b> SPORTI events accessible for Senior Police Officers  of Karnataka only</span>
+            isKannada?(<span><b>ಹಕ್ಕು ನಿರಾಕರಣೆ:</b> ಹಿರಿಯ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗೆ ಮಾತ್ರ ಸ್ಪೋರ್ಟಿ ಈವೆಂಟ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು</span>):(
+              <span><b>Disclaimer:</b> SPORTI events accessible for Senior Police Officers.</span>
             )
           }
           </marquee>
