@@ -92,7 +92,7 @@ const GuestLogin = () => {
                 <h1 className="fs-5 mt-2 fw-bold">Senior Police officer's Research and Training Institute</h1>
               </div>
               <hr /> */}
-              <h1 className="fs-5 fw-bold text-center">GUEST LOGIN</h1>
+              <h1 className="fs-5 fw-bold text-center">NON MEMBER LOGIN</h1>
               <hr />
 
               {error && <Alert variant="danger">{error}</Alert>}
