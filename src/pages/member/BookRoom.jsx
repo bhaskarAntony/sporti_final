@@ -14,33 +14,61 @@ const BookRoom = () => {
   const [loading, setLoading] = useState(false);
   const [roomsLoading, setRoomsLoading] = useState(false);
   const [availableRooms, setAvailableRooms] = useState([]);
-  const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
-    sporti: '',
-    bookingFor: 'Self',
-    relation: 'Self',
-    roomType: '',
-    roomId: null, // Changed from roomIds array to single roomId
-    totalCost: 0,
+  const [formData, setFormData] = useState(() => {
+    const savedFormData = localStorage.getItem('bookRoomFormData');
+    return savedFormData ? JSON.parse(savedFormData) : {
+      checkIn: '',
+      checkOut: '',
+      sporti: '',
+      bookingFor: 'Self',
+      relation: 'Self',
+      roomType: '',
+      roomId: null,
+      totalCost: 0,
+    };
   });
-  const [officerDetails, setOfficerDetails] = useState({
-    name: '',
-    designation: '',
-    gender: 'Male',
-    phoneNumber: '',
+  const [officerDetails, setOfficerDetails] = useState(() => {
+    const savedOfficerDetails = localStorage.getItem('bookRoomOfficerDetails');
+    return savedOfficerDetails ? JSON.parse(savedOfficerDetails) : {
+      name: '',
+      designation: '',
+      gender: 'Male',
+      phoneNumber: '',
+    };
   });
-  const [occupantDetails, setOccupantDetails] = useState({
-    name: '',
-    phoneNumber: user?.phoneNumber || '',
-    gender: 'Male',
-    location: '',
-    relation: 'Self',
+  const [occupantDetails, setOccupantDetails] = useState(() => {
+    const savedOccupantDetails = localStorage.getItem('bookRoomOccupantDetails');
+    return savedOccupantDetails ? JSON.parse(savedOccupantDetails) : {
+      name: '',
+      phoneNumber: user?.phoneNumber || '',
+      gender: 'Male',
+      location: '',
+      relation: 'Self',
+    };
+  });
+  const [selectedRoom, setSelectedRoom] = useState(() => {
+    const savedSelectedRoom = localStorage.getItem('bookRoomSelectedRoom');
+    return savedSelectedRoom ? JSON.parse(savedSelectedRoom) : null;
   });
   const [floors, setFloors] = useState([]);
-  const [selectedRoom, setSelectedRoom] = useState(null); // Changed to single room object
   const [fetchError, setFetchError] = useState(null);
   const [showRoomModal, setShowRoomModal] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('bookRoomFormData', JSON.stringify(formData));
+  }, [formData]);
+
+  useEffect(() => {
+    localStorage.setItem('bookRoomOfficerDetails', JSON.stringify(officerDetails));
+  }, [officerDetails]);
+
+  useEffect(() => {
+    localStorage.setItem('bookRoomOccupantDetails', JSON.stringify(occupantDetails));
+  }, [occupantDetails]);
+
+  useEffect(() => {
+    localStorage.setItem('bookRoomSelectedRoom', JSON.stringify(selectedRoom));
+  }, [selectedRoom]);
 
   const allowedRoomTypes = useMemo(() => {
     const isHighRank = user?.designation === 'ADGP' || user?.designation === 'DGP';
@@ -88,7 +116,6 @@ const BookRoom = () => {
             setFetchError('No rooms available for the selected criteria.');
           }
 
-          // Update selectedRoom if it is no longer available
           if (selectedRoom && !filteredRooms.some(r => r._id === selectedRoom._id)) {
             setSelectedRoom(null);
             setFormData(prev => ({ ...prev, roomId: null, totalCost: 0 }));
@@ -113,7 +140,7 @@ const BookRoom = () => {
     const checkInDate = new Date(formData.checkIn);
     const checkOutDate = new Date(formData.checkOut);
     const days = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
-    const price = formData.bookingFor === 'Self'  ? room.price.member : room.price.guest;
+    const price = formData.bookingFor === 'Self' ? room.price.member : room.price.guest;
     return price * days;
   };
 
@@ -128,14 +155,12 @@ const BookRoom = () => {
         ...prev,
         [name]: value,
       };
-      // Only reset roomType and related fields if sporti changes and the new sporti is different
       if (name === 'sporti' && value !== prev.sporti) {
         newFormData.roomType = '';
         newFormData.roomId = null;
         newFormData.totalCost = 0;
         setSelectedRoom(null);
       }
-      // Reset roomId and totalCost if roomType changes
       if (name === 'roomType' && value !== prev.roomType) {
         newFormData.roomId = null;
         newFormData.totalCost = 0;
@@ -156,7 +181,7 @@ const BookRoom = () => {
     setSelectedRoom(null);
     if (value === 'Self' && user) {
       setOccupantDetails({
-        name:  '',
+        name: '',
         phoneNumber: user.phoneNumber || '',
         gender: 'Male',
         location: '',
@@ -256,16 +281,28 @@ const BookRoom = () => {
     }
 
     setLoading(true);
+    localStorage.setItem('bookRoomFormData', JSON.stringify(formData));
+    localStorage.setItem('bookRoomOfficerDetails', JSON.stringify(officerDetails));
+    localStorage.setItem('bookRoomOccupantDetails', JSON.stringify(occupantDetails));
+    localStorage.setItem('bookRoomSelectedRoom', JSON.stringify(selectedRoom));
     navigate('/confirm-booking', {
       state: {
         formData,
-        selectedRoom, // Single room object
+        selectedRoom,
         bookingType: 'room',
         officerDetails: user ? null : officerDetails,
         occupantDetails,
       },
     });
     setLoading(false);
+  };
+
+  const handleCancel = () => {
+    localStorage.removeItem('bookRoomFormData');
+    localStorage.removeItem('bookRoomOfficerDetails');
+    localStorage.removeItem('bookRoomOccupantDetails');
+    localStorage.removeItem('bookRoomSelectedRoom');
+    navigate('/');
   };
 
   const today = new Date().toISOString().split('T')[0];
@@ -384,98 +421,93 @@ const BookRoom = () => {
                     name="name"
                     value={occupantDetails.name}
                     onChange={handleOccupantChange}
-                    // disabled={formData.bookingFor === 'Self' && user}
                     required
                   />
                 </Form.Group>
-               <div className="row">
-                <div className="col-md-6">
-                   <Form.Group className="mb-3">
-                  <Form.Label>Relation</Form.Label>
-                  <Form.Select
-                    name="relation"
-                    value={formData.relation}
-                    onChange={e => {
-                      handleFormChange(e);
-                      handleOccupantChange(e);
-                    }}
-                    required
-                  >
-                    {formData.bookingFor === 'Self' ? (
-                      <>
-                        <option value="Self">Self</option>
-                        <option value="Spouse">Spouse</option>
-                        <option value="Children">Children</option>
-                        <option value="Parents">Parents</option>
-                      </>
-                    ) : (
-                      <>
-                        
-                        <option value="Batchmate">Batchmate</option>
-                        <option value="Friend">Friend</option>
-                        <option value="Relative">Relative</option>
-                        <option value="Acquaintance">Acquaintance</option>
-                      </>
-                    )}
-                  </Form.Select>
-                </Form.Group>
-                </div>
-                <div className="col-md-6 mt-2">
+                <div className="row">
+                  <div className="col-md-6">
                     <Form.Group className="mb-3">
-                  <Form.Label>Gender</Form.Label>
-                  <div>
-                    <Form.Check
-                      inline
-                      type="radio"
-                      label="Male"
-                      name="gender"
-                      value="Male"
-                      checked={occupantDetails.gender === 'Male'}
-                      onChange={handleOccupantChange}
-                      required
-                    />
-                    <Form.Check
-                      inline
-                      type="radio"
-                      label="Female"
-                      name="gender"
-                      value="Female"
-                      checked={occupantDetails.gender === 'Female'}
-                      onChange={handleOccupantChange}
-                      required
-                    />
+                      <Form.Label>Relation</Form.Label>
+                      <Form.Select
+                        name="relation"
+                        value={formData.relation}
+                        onChange={e => {
+                          handleFormChange(e);
+                          handleOccupantChange(e);
+                        }}
+                        required
+                      >
+                        {formData.bookingFor === 'Self' ? (
+                          <>
+                            <option value="Self">Self</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Children">Children</option>
+                            <option value="Parents">Parents</option>
+                          </>
+                        ) : (
+                          <>
+                            <option value="Batchmate">Batchmate</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Relative">Relative</option>
+                            <option value="Acquaintance">Acquaintance</option>
+                          </>
+                        )}
+                      </Form.Select>
+                    </Form.Group>
                   </div>
-                </Form.Group>
-                </div>
-                <div className="col-md-6">
-                   <Form.Group className="mb-3">
-                  <Form.Label>Phone Number</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="phoneNumber"
-                    value={occupantDetails.phoneNumber}
-                    onChange={handleOccupantChange}
-                    disabled={formData.bookingFor === 'Self' && user}
-                    required
-                  />
-                </Form.Group>
-                </div>
-                <div className="col-md-6">
+                  <div className="col-md-6 mt-2">
                     <Form.Group className="mb-3">
-                  <Form.Label>Home Location</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="location"
-                    value={occupantDetails.location}
-                    onChange={handleOccupantChange}
-                    required
-                  />
-                </Form.Group>
+                      <Form.Label>Gender</Form.Label>
+                      <div>
+                        <Form.Check
+                          inline
+                          type="radio"
+                          label="Male"
+                          name="gender"
+                          value="Male"
+                          checked={occupantDetails.gender === 'Male'}
+                          onChange={handleOccupantChange}
+                          required
+                        />
+                        <Form.Check
+                          inline
+                          type="radio"
+                          label="Female"
+                          name="gender"
+                          value="Female"
+                          checked={occupantDetails.gender === 'Female'}
+                          onChange={handleOccupantChange}
+                          required
+                        />
+                      </div>
+                    </Form.Group>
+                  </div>
+                  <div className="col-md-6">
+                    <Form.Group className="mb-3">
+                      <Form.Label>Phone Number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="phoneNumber"
+                        value={occupantDetails.phoneNumber}
+                        onChange={handleOccupantChange}
+                        disabled={formData.bookingFor === 'Self' && user}
+                        required
+                      />
+                    </Form.Group>
+                  </div>
+                  <div className="col-md-6">
+                    <Form.Group className="mb-3">
+                      <Form.Label>Home Location</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="location"
+                        value={occupantDetails.location}
+                        onChange={handleOccupantChange}
+                        required
+                      />
+                    </Form.Group>
+                  </div>
                 </div>
-               </div>
-              
-               
-              
               </Form>
             </Card.Body>
           </Card>
@@ -559,32 +591,21 @@ const BookRoom = () => {
                       disabled={!formData.sporti || !formData.roomType || !formData.checkIn || !formData.checkOut}
                     >
                       <BedDouble size={18} className="me-2" />
-                      {
-                      selectedRoom?.roomNumber?(<span>{selectedRoom.roomNumber} - Room selected</span>):('Select Room')
-                      } 
+                      {selectedRoom?.roomNumber ? (
+                        <span>{selectedRoom.roomNumber} - Room selected</span>
+                      ) : (
+                        'Select Room'
+                      )}
                     </Button>
                   </Form.Group>
                 )}
-                {/* {selectedRoom && (
-                  <Card className="alert-info alert p-3 mb-3">
-                    <h6>Selected Room</h6>
-                    <div className="mb-2">
-                      <p className="mb-1"><strong>Room Number:</strong> {selectedRoom.roomNumber}</p>
-                      <p className="mb-1"><strong>Category:</strong> {selectedRoom.category}</p>
-                      <p className="mb-1"><strong>Floor:</strong> {selectedRoom.floor}</p>
-                      <p className="mb-1"><strong>Price:</strong> ₹{(formData.bookingFor === 'Self' || formData.relation === 'Batchmate' ? selectedRoom.price.member : selectedRoom.price.guest).toLocaleString()}/night</p>
-                      <Button variant="danger" size="sm" onClick={() => handleRoomSelect(selectedRoom)}>Remove</Button>
-                    </div>
-                    <p className="mb-0"><strong>Total Cost:</strong> ₹{formData.totalCost.toLocaleString()}</p>
-                  </Card>
-                )} */}
                 {!isRoomSelectionAllowed && formData.bookingFor === 'Guest' && formData.relation !== 'Batchmate' && (
                   <Alert variant="info" className="mb-3">
                     Room will be assigned by the admin for this guest booking.
                   </Alert>
                 )}
                 {fetchError && (
-                  <Alert Wariant="danger" className="mb-3">
+                  <Alert variant="danger" className="mb-3">
                     {fetchError}
                   </Alert>
                 )}
@@ -604,7 +625,7 @@ const BookRoom = () => {
                       'Proceed to Confirm'
                     )}
                   </Button>
-                  <Button variant="danger" as="a" href="/">
+                  <Button variant="danger" onClick={handleCancel}>
                     Cancel
                   </Button>
                 </div>
@@ -618,7 +639,6 @@ const BookRoom = () => {
             <Modal.Body>
               {roomsLoading ? (
                 <div className="text-center py-5">
-                  {/* <Spinner animation="border" className="blue-btn m-0 border-0" /> */}
                   <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" width={60} alt="sporti" />
                   <p className="mt-3">Loading available rooms...</p>
                 </div>
@@ -674,12 +694,6 @@ const BookRoom = () => {
                               >
                                 <Card.Body className="text-center p-1">
                                   <h5 className="m-0 small">{room.roomNumber}</h5>
-                                  {/* <p className="mb-1 badge bg-main">{room.category}</p> */}
-                                  {/* <p className="mb-1 small">
-                                    &#8377;
-                                    <strong>Price:</strong> ₹
-                                    {(formData.bookingFor === 'Self' ? room.price.member : room.price.guest).toLocaleString()}/night
-                                  </p> */}
                                 </Card.Body>
                               </Card>
                             </Col>

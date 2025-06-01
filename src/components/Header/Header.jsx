@@ -243,7 +243,7 @@ function Header({ toggleTheme, theme }) {
             <hr />
             <Modal.Body className='d-flex flex-wrap gap-2 p-2'>
               <a href='/login' className="blue-btn">Member</a>
-              <a href='/guest/book-room' className="blue-btn">non Member</a>
+              <a href='/guest/login' className="blue-btn">non Member</a>
             </Modal.Body>
       
           </Modal>

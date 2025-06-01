@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Card, Alert, Spinner, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AlertContext from '../../context/AlertContext.jsx';
@@ -9,30 +9,51 @@ const GuestBookRoom = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    checkIn: '',
-    checkOut: '',
-    sporti: '',
-    bookingFor: 'Guest',
-    relation: 'Batchmate',
-    roomType: '',
-    totalCost: 0,
+  const [formData, setFormData] = useState(() => {
+    const savedFormData = localStorage.getItem('formData');
+    return savedFormData ? JSON.parse(savedFormData) : {
+      checkIn: '',
+      checkOut: '',
+      sporti: '',
+      bookingFor: 'Guest',
+      relation: 'Batchmate',
+      roomType: '',
+      totalCost: 0,
+    };
   });
-  const [officerDetails, setOfficerDetails] = useState({
-    name: '',
-    designation: '',
-    gender: 'Male',
-    phoneNumber: '',
-    email: '',
+  const [officerDetails, setOfficerDetails] = useState(() => {
+    const savedOfficerDetails = localStorage.getItem('officerDetails');
+    return savedOfficerDetails ? JSON.parse(savedOfficerDetails) : {
+      name: '',
+      designation: '',
+      gender: 'Male',
+      phoneNumber: '',
+      email: '',
+    };
   });
-  const [occupantDetails, setOccupantDetails] = useState({
-    name: '',
-    phoneNumber: '',
-    gender: 'Male',
-    location: '',
-    relation: 'Batchmate',
-    email: '',
+  const [occupantDetails, setOccupantDetails] = useState(() => {
+    const savedOccupantDetails = localStorage.getItem('occupantDetails');
+    return savedOccupantDetails ? JSON.parse(savedOccupantDetails) : {
+      name: '',
+      phoneNumber: '',
+      gender: 'Male',
+      location: '',
+      relation: 'Batchmate',
+      email: '',
+    };
   });
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
+
+  useEffect(() => {
+    localStorage.setItem('officerDetails', JSON.stringify(officerDetails));
+  }, [officerDetails]);
+
+  useEffect(() => {
+    localStorage.setItem('occupantDetails', JSON.stringify(occupantDetails));
+  }, [occupantDetails]);
 
   const allowedRoomTypes = {
     'SPORTI-1': ['Standard', 'Family', 'VIP'],
@@ -139,6 +160,9 @@ const GuestBookRoom = () => {
       return;
     }
     setLoading(true);
+    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem('officerDetails', JSON.stringify(officerDetails));
+    localStorage.setItem('occupantDetails', JSON.stringify(occupantDetails));
     navigate('/guest/confirm-booking', {
       state: {
         formData,
@@ -148,6 +172,13 @@ const GuestBookRoom = () => {
       },
     });
     setLoading(false);
+  };
+
+  const handleCancel = () => {
+    localStorage.removeItem('formData');
+    localStorage.removeItem('officerDetails');
+    localStorage.removeItem('occupantDetails');
+    navigate('/');
   };
 
   const today = new Date().toISOString().split('T')[0];
@@ -462,7 +493,7 @@ const GuestBookRoom = () => {
                       'Proceed to Confirm'
                     )}
                   </Button>
-                  <Button variant="danger" as="a" href="/">
+                  <Button variant="danger" onClick={handleCancel}>
                     Cancel
                   </Button>
                 </div>

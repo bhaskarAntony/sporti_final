@@ -82,6 +82,7 @@ import GuestConfirmBooking from './pages/Guest/GuestConfirmBooking.jsx';
 import GuestBookRoom from './pages/Guest/GuestBookRoom.jsx';
 import CheckBookingStatus from './pages/Guest/CheckBookingStatus.jsx';
 import ManageNonMemberBookings from './pages/admin/NonMemberBookingManager.jsx';
+import GuestRoute from './context/GuestRoute.jsx';
 
 function App() {
    const { isAuthenticated, handleLogout, user} = useContext(AuthContext);
@@ -338,9 +339,9 @@ function App() {
 <Route path="/guest-booking" element={<ProtectedRoute><GuestBooking /></ProtectedRoute>} />
 <Route path="/my-guests" element={<ProtectedRoute><MyGuests /></ProtectedRoute>} />
 <Route path="/confirm-booking" element={<ProtectedRoute><ConfirmBooking /></ProtectedRoute>} />
-<Route path="/guest/book-room" element={<GuestBookRoom/>}/>
-<Route path="/guest/confirm-booking" element={<GuestConfirmBooking />} />
-<Route path="/guest/booking/status" element={<CheckBookingStatus />} />
+<Route path="/guest/book-room" element={<GuestRoute><GuestBookRoom/></GuestRoute> }/>
+<Route path="/guest/confirm-booking" element={<GuestRoute><GuestConfirmBooking /></GuestRoute>} />
+<Route path="/guest/booking/status" element={<GuestRoute><CheckBookingStatus /></GuestRoute>} />
 
 
  {/* Admin Routes */}
