@@ -168,12 +168,12 @@ function Header({ toggleTheme, theme }) {
                                  id="user-dropdown"
                                  align="end"
                                >
-                                 <NavDropdown.Item as={Link} to="/dashboard">
+                                 {/* <NavDropdown.Item as={Link} to="/dashboard">
                                    <HomeIcon size={16} className="me-2" />
                                    Booking Status
-                                 </NavDropdown.Item>
+                                 </NavDropdown.Item> */}
                                 
-                                 <NavDropdown.Divider />
+                                 {/* <NavDropdown.Divider /> */}
                                  <NavDropdown.Item onClick={logoutGuest}>
                                    <LogOut size={16} className="me-2" />
                                    Logout

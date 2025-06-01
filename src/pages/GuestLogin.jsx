@@ -69,7 +69,7 @@ const GuestLogin = () => {
 
       if (result.success) {
         setSuccessMessage('Guest login successful!');
-        navigate('/guest/bookings');
+        navigate('/');
       } else {
         setError(result.message);
       }
